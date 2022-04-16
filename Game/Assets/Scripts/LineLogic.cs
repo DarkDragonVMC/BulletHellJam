@@ -9,7 +9,7 @@ public class LineLogic : MonoBehaviour
     private EdgeCollider2D coll;
     private GameObject[] anchors;
     public GameObject anchorPrefab;
-    private int value = 5;
+    private int value = 2;
     private Transform player;
     private float anglex = 0f;
     private float angley = 2f;
@@ -61,56 +61,53 @@ public class LineLogic : MonoBehaviour
 
     private void rearrange()
     {
+        GameObject[] points = anchors;
 
-        int LayerIgnoreRaycast = LayerMask.NameToLayer("Ignore Raycast");
-
-        List<Vector2> copy = new List<Vector2>();
-        foreach (Vector3 point in ObjectsToVector3Array(anchors))
+        for (int i = 0; i < points.Length; i++)
         {
-            copy.Add(point);
-        }
 
-        RaycastHit2D target = new RaycastHit2D();
-        while(target.transform == null)
-        {
-            if (angley == 2) anglex += 0.01f;
-            if (anglex == 2) angley -= 0.01f;
-            if (angley == -2) anglex -= 0.01f;
-            if (anglex == -2) angley += 0.01f;
+            Vector2 first = points[i].transform.position;
+            Vector2 second = points[i + 1].transform.position;
+            Vector2 origin = player.position;
 
-            Vector3 pointer = new Vector3(player.position.x + anglex, player.position.y + 0.01f + angley, player.position.z);
-
-            Vector3 direction = pointer - player.position;
-
-            target = Physics2D.Raycast(player.position, direction, 10f);
-            directionAb = direction;
-        }
-
-        anchors[0] = target.transform.gameObject;
-        anchors[0].gameObject.layer = LayerIgnoreRaycast;
-
-        for(int i = 1; i <= 6; i++)
-        {
-            target = new RaycastHit2D();
-            while (target.transform == null)
+            if(first == second)
             {
-                if (angley == 2) anglex += 0.01f;
-                if (anglex == 2) angley -= 0.01f;
-                if (angley == -2) anglex -= 0.01f;
-                if (anglex == -2) angley += 0.01f;
-
-                Vector3 previous = player.position + directionAb;
-
-                Vector3 pointer = new Vector3(anchors[i - 1].transform.position.x + anglex, anchors[i - 1].transform.position.y + 0.01f + angley, player.position.z);
-
-                Vector3 direction = pointer - anchors[i-1].transform.position;
-
-                target = Physics2D.Raycast(player.position, direction, 10f);
-                directionAb = direction;
+                anchors[i] = points[i];
+                anchors[i + 1] = points[i + 1];
+                break;
             }
 
-            anchors[i] = target.transform.gameObject;
-            anchors[i].gameObject.layer = LayerIgnoreRaycast;
+            Vector2 firstOffset = first - origin;
+            Vector2 secondOffset = second - origin;
+
+            float angle1 = Mathf.Atan2(firstOffset.x, firstOffset.y);
+            float angle2 = Mathf.Atan2(secondOffset.x, secondOffset.y);
+
+            if(angle1 < angle2)
+            {
+                anchors[i] = points[i];
+                anchors[i + 1] = points[i + 1];
+                break;
+            }
+
+            if(angle1 > angle2)
+            {
+                anchors[i] = points[i + 1];
+                anchors[i + 1] = points[i];
+                break;
+            }
+
+            if(firstOffset.sqrMagnitude < secondOffset.sqrMagnitude)
+            {
+                anchors[i] = points[i];
+                anchors[i + 1] = points[i + 1];
+                break;
+            } else
+            {
+                anchors[i] = points[i + 1];
+                anchors[i + 1] = points[i];
+                break;
+            }
         }
     }
 
