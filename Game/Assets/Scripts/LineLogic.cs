@@ -9,11 +9,7 @@ public class LineLogic : MonoBehaviour
     private EdgeCollider2D coll;
     private GameObject[] anchors;
     public GameObject anchorPrefab;
-    private int value = 2;
     private Transform player;
-    private float anglex = 0f;
-    private float angley = 2f;
-    private Vector3 directionAb;
 
     // Start is called before the first frame update
     void Start()
@@ -49,66 +45,34 @@ public class LineLogic : MonoBehaviour
 
     public void updateAnchor(GameObject Bullet)
     {
-        value++;
-        if (value > 5) value = 0;
-        Destroy(anchors[value]);
         GameObject newAnchor = Instantiate(anchorPrefab, Bullet.transform.position, Bullet.transform.rotation);
-        anchors[value] = newAnchor;
-        rearrange();
+        Destroy(anchors[nearest(newAnchor)]);
+        anchors[nearest(newAnchor)] = newAnchor;
         lr.SetPositions(ObjectsToVector3Array(anchors));
         updateCollision();
     }
 
-    private void rearrange()
+    private int nearest(GameObject na)
     {
-        GameObject[] points = anchors;
+        GameObject tMin = null;
+        float minDist = Mathf.Infinity;
+        Vector2 compare = na.transform.position;
 
-        for (int i = 0; i < points.Length; i++)
+        foreach(GameObject g in anchors)
         {
-
-            Vector2 first = points[i].transform.position;
-            Vector2 second = points[i + 1].transform.position;
-            Vector2 origin = player.position;
-
-            if(first == second)
+            float dist = Vector2.Distance(g.transform.position, compare);
+            if(dist < minDist)
             {
-                anchors[i] = points[i];
-                anchors[i + 1] = points[i + 1];
-                break;
-            }
-
-            Vector2 firstOffset = first - origin;
-            Vector2 secondOffset = second - origin;
-
-            float angle1 = Mathf.Atan2(firstOffset.x, firstOffset.y);
-            float angle2 = Mathf.Atan2(secondOffset.x, secondOffset.y);
-
-            if(angle1 < angle2)
-            {
-                anchors[i] = points[i];
-                anchors[i + 1] = points[i + 1];
-                break;
-            }
-
-            if(angle1 > angle2)
-            {
-                anchors[i] = points[i + 1];
-                anchors[i + 1] = points[i];
-                break;
-            }
-
-            if(firstOffset.sqrMagnitude < secondOffset.sqrMagnitude)
-            {
-                anchors[i] = points[i];
-                anchors[i + 1] = points[i + 1];
-                break;
-            } else
-            {
-                anchors[i] = points[i + 1];
-                anchors[i + 1] = points[i];
-                break;
+                tMin = g;
+                minDist = dist;
             }
         }
+
+        List<GameObject> list = new List<GameObject>();
+
+        foreach (GameObject g in anchors) list.Add(g);
+
+        return list.IndexOf(tMin);
     }
 
     private void updateCollision()
