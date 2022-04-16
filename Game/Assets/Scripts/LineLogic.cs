@@ -50,6 +50,8 @@ public class LineLogic : MonoBehaviour
         anchors[nearest(newAnchor)] = newAnchor;
         lr.SetPositions(ObjectsToVector3Array(anchors));
         updateCollision();
+
+        FindObjectOfType<AudioManager>().Play("Blitz");
     }
 
     private int nearest(GameObject na)
