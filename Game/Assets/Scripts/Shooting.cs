@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject currentBullet;
 
+    public int Ammo;
+
     public float bulletForce = 20f;
 
     // Start is called before the first frame update
@@ -25,7 +27,8 @@ public class Shooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) Shoot();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(currentBullet != null) ll.updateAnchor(currentBullet);
+            if (currentBullet != null && Ammo >= 1) ll.updateAnchor(currentBullet);
+            else //play Sound;
         }
     }
 
