@@ -10,6 +10,11 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth;
     public int startHealth;
 
+    private CameraShake cameraShake;
+
+    public float shakeDuration;
+    public float shakeStrenght;
+
     //Health Display
     private Image[] hearts;
     public Sprite fullHeart;
@@ -22,6 +27,8 @@ public class PlayerHealth : MonoBehaviour
         hearts[0] = GameObject.Find("Heart0").GetComponent<Image>();
         hearts[1] = GameObject.Find("Heart1").GetComponent<Image>();
         hearts[2] = GameObject.Find("Heart2").GetComponent<Image>();
+
+        cameraShake = GameObject.Find("Camera").GetComponent<CameraShake>();
     }
 
     void Awake()
@@ -29,16 +36,11 @@ public class PlayerHealth : MonoBehaviour
         healthPoints = startHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void takeDamage(int amount)
     {
         healthPoints = healthPoints - amount;
         updateHealthDisplay();
+        StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
         if (healthPoints <= 0)
         {
             Die();
