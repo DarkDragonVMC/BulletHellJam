@@ -9,8 +9,9 @@ public class Shooting : MonoBehaviour
     private LineLogic ll;
     public GameObject bulletPrefab;
     private GameObject currentBullet;
+    private TMPro.TextMeshProUGUI ammoDisplay;
 
-    public int Ammo;
+    public int Ammo = 10;
 
     public float bulletForce = 20f;
 
@@ -19,6 +20,8 @@ public class Shooting : MonoBehaviour
     {
         firePoint = GameObject.Find("FirePoint").GetComponent<Transform>();
         ll = GameObject.Find("Borders").GetComponent<LineLogic>();
+        ammoDisplay = GameObject.Find("ammoDisplay").GetComponent<TMPro.TextMeshProUGUI>();
+        updateAmmoDisplay(Ammo);
     }
 
     // Update is called once per frame
@@ -27,8 +30,13 @@ public class Shooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1")) Shoot();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (currentBullet != null && Ammo >= 1) ll.updateAnchor(currentBullet);
-            else //play Sound;
+            if (currentBullet != null && Ammo >= 1)
+            {
+                Ammo--;
+                updateAmmoDisplay(Ammo);
+                ll.updateAnchor(currentBullet);
+            }
+            //else Play Sound
         }
     }
 
@@ -37,5 +45,10 @@ public class Shooting : MonoBehaviour
         currentBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    }
+
+    public void updateAmmoDisplay(int newNumber)
+    {
+        ammoDisplay.SetText(newNumber.ToString());
     }
 }
