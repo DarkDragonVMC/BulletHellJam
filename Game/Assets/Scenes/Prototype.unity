@@ -1590,6 +1590,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
   Ammo: 10
   bulletForce: 12.5
+  timeBetweenShots: 0.45
 --- !u!58 &979813184
 CircleCollider2D:
   m_ObjectHideFlags: 0
