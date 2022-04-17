@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 5f;
     private Rigidbody2D rb;
+    private GameObject camHolder;
     private Camera cam;
 
     //Input
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        camHolder = GameObject.Find("CameraHolder");
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
@@ -30,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Move Camera with Player
-        cam.transform.position = new Vector3(rb.position.x, rb.position.y, -10f);
+        camHolder.transform.position = new Vector3(rb.position.x, rb.position.y, -10f);
     }
 
     //Physics Update
