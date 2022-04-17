@@ -697,33 +697,39 @@ MonoBehaviour:
   sounds:
   - name: Blitz
     clip: {fileID: 8300000, guid: e4f13bea083937a4c95a9e3acea1d763, type: 3}
-    volume: 0.85
+    volume: 0.55
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Shooting
     clip: {fileID: 8300000, guid: 234429901528fd44397bc6f79738fe08, type: 3}
-    volume: 0.45
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ShootingEnemy
     clip: {fileID: 8300000, guid: ef7f90273cc9b954bace282b98c91770, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: TakeDamage
     clip: {fileID: 8300000, guid: a61ae3e789a086a468f6b2fca1d7ac2f, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: TakeDamageEnemy
     clip: {fileID: 8300000, guid: 79574bbc95c5b7c4b8f5e54f000eaef6, type: 3}
-    volume: 0.6
+    volume: 0.4
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Music
+    clip: {fileID: 8300000, guid: b0318fa332a3ef04db2a20cbdbe37f05, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   globalVolume: 0.5
 --- !u!4 &317036703
