@@ -53,6 +53,7 @@ public class Shooting : MonoBehaviour
         currentBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        FindObjectOfType<AudioManager>().Play("Shooting");
         cooldown = timeBetweenShots; 
     }
 
