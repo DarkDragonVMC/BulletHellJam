@@ -16,7 +16,7 @@ public class PlayerHealth : MonoBehaviour
     public float shakeStrenght;
 
     //Health Display
-    private Image[] hearts;
+    public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public Sprite emptyHeart2;
