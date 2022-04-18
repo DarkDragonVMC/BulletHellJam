@@ -19,4 +19,8 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene("Prototype");
     }
+    public void quit()
+    {
+        Application.Quit();
+    }
 }
