@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
 
-    private int healthPoints;
+    public int healthPoints;
     public int maxHealth;
     public int startHealth;
 
@@ -24,11 +24,12 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hearts = new Image[3];
         hearts[0] = GameObject.Find("Heart0").GetComponent<Image>();
         hearts[1] = GameObject.Find("Heart1").GetComponent<Image>();
         hearts[2] = GameObject.Find("Heart2").GetComponent<Image>();
 
-        cameraShake = GameObject.Find("Camera").GetComponent<CameraShake>();
+        cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
     }
 
     void Awake()
@@ -40,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     {
         healthPoints = healthPoints - amount;
         updateHealthDisplay();
+        FindObjectOfType<AudioManager>().Play("TakeDamage");
         StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
         if (healthPoints <= 0)
         {
@@ -57,7 +59,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void updateHealthDisplay()
     {
-        int easterEgg = Random.Range(1, 90);
+        int easterEgg = Random.Range(1, 71);
 
         if(healthPoints == 3)
         {
@@ -88,7 +90,7 @@ public class PlayerHealth : MonoBehaviour
                 hearts[1].sprite = emptyHeart;
             }
 
-            hearts[1].sprite = fullHeart;
+            hearts[2].sprite = fullHeart;
         }
 
         if (healthPoints == 0)

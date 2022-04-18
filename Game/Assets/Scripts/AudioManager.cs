@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     [Range(0f,1f)]
     public float globalVolume;
 
+    public float musicVolume;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,6 +35,8 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume * globalVolume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+
+            if (s.name == "Music") s.source.volume = s.volume * musicVolume * globalVolume;
         }
     }
 
