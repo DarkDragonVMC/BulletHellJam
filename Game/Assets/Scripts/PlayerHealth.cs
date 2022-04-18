@@ -112,6 +112,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
-
+        FindObjectOfType<AudioManager>().Play("Death");
     }
 }

@@ -12,6 +12,8 @@ public class LineLogic : MonoBehaviour
     public GameObject anchorPrefab;
     private Transform player;
 
+    public float thickness;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class LineLogic : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == "Player") Debug.Log("inside");
+        FindObjectOfType<Oxygen>().loseOxygen();
     }
 
     public Vector3[] ObjectsToVector3Array(GameObject[] input)
@@ -106,6 +108,22 @@ public class LineLogic : MonoBehaviour
         {
             verticies[i] = ObjectsToVector3Array(anchors)[i];
         }
+
+        //move every vertex closer to the center
+        Vector2 center = Vector2.zero;
+
+        foreach(Vector2 corner in verticies)
+        {
+            center += corner;
+        }
+        center = center / verticies.Length;
+
+        for (int i = 0; i < 6; i++)
+        {
+            Vector2 corner = verticies[i];
+            verticies[i] = Vector2.MoveTowards(corner, center, thickness);
+        }
+        
         area.SetPath(0, verticies);
     }
 }

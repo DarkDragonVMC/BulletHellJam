@@ -792,19 +792,25 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: TakeDamage
     clip: {fileID: 8300000, guid: a61ae3e789a086a468f6b2fca1d7ac2f, type: 3}
-    volume: 0.4
+    volume: 0.55
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: TakeDamageEnemy
     clip: {fileID: 8300000, guid: 79574bbc95c5b7c4b8f5e54f000eaef6, type: 3}
-    volume: 0.4
+    volume: 0.55
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Music
     clip: {fileID: 8300000, guid: b0318fa332a3ef04db2a20cbdbe37f05, type: 3}
     volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: f8e4ef5d0be35ac468b3b47f5d834cb5, type: 3}
+    volume: 0.275
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -913,6 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPrefab: {fileID: 8938697940308362231, guid: 13a77562d381a2945b6b637d655cb693, type: 3}
+  thickness: 0.1
 --- !u!120 &417604874
 LineRenderer:
   m_ObjectHideFlags: 0
