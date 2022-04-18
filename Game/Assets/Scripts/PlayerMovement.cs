@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject camHolder;
     private Camera cam;
+    private PlayerHealth ph;
 
     //Input
     private Vector2 movement;
@@ -21,11 +22,13 @@ public class PlayerMovement : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         camHolder = GameObject.Find("CameraHolder");
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        ph = this.GetComponent<PlayerHealth>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ph.dead) return;
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     //Physics Update
     private void FixedUpdate()
     {
+        if (ph.dead) return;
         //Move Player
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 

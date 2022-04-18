@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject currentBullet;
     private TMPro.TextMeshProUGUI ammoDisplay;
+    private PlayerHealth ph;
 
     public int Ammo = 10;
 
@@ -24,6 +25,7 @@ public class Shooting : MonoBehaviour
         firePoint = GameObject.Find("FirePoint").GetComponent<Transform>();
         ll = GameObject.Find("Borders").GetComponent<LineLogic>();
         ammoDisplay = GameObject.Find("ammoDisplay").GetComponent<TMPro.TextMeshProUGUI>();
+        ph = this.GetComponent<PlayerHealth>();
         updateAmmoDisplay(Ammo);
 
         cooldown = 0f;
@@ -32,6 +34,7 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ph.dead) return;
         if (cooldown > 0) cooldown = cooldown - Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
 

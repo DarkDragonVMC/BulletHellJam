@@ -21,6 +21,15 @@ public class PlayerHealth : MonoBehaviour
     public Sprite emptyHeart;
     public Sprite emptyHeart2;
 
+    //Game Over Screen
+    public float fadeInSpeed;
+    private CanvasGroup gameOverScreen;
+    private GameObject backToMenuButton;
+    private GameObject restartButton;
+    private GameObject quitButton;
+
+    public bool dead;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +37,15 @@ public class PlayerHealth : MonoBehaviour
         hearts[0] = GameObject.Find("Heart0").GetComponent<Image>();
         hearts[1] = GameObject.Find("Heart1").GetComponent<Image>();
         hearts[2] = GameObject.Find("Heart2").GetComponent<Image>();
+
+        gameOverScreen = GameObject.Find("GameOver").GetComponent<CanvasGroup>();
+        backToMenuButton = GameObject.Find("BackToMenu");
+        restartButton = GameObject.Find("Restart");
+        quitButton = GameObject.Find("Quit");
+
+        backToMenuButton.SetActive(false);
+        restartButton.SetActive(false);
+        quitButton.SetActive(false);
 
         cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
     }
@@ -39,6 +57,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(int amount)
     {
+        if (dead) return;
         healthPoints = healthPoints - amount;
         if (healthPoints < 0) healthPoints = 0;
         updateHealthDisplay();
@@ -53,8 +72,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void heal(int amount)
     {
+        if (dead) return;
         healthPoints = healthPoints + amount;
-        if (healthPoints > 3) healthPoints = 3;
+        if (healthPoints > maxHealth) healthPoints = maxHealth;
         updateHealthDisplay();
     }
 
@@ -113,9 +133,27 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        if (dead) return;
+        backToMenuButton.SetActive(true);
+        restartButton.SetActive(true);
+        quitButton.SetActive(true);
+
+        StartCoroutine(fadeIn());
+
         healthPoints = 0;
         updateHealthDisplay();
-        //StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
+        StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
         FindObjectOfType<AudioManager>().Play("Death");
+        dead = true;
+    }
+
+    private IEnumerator fadeIn()
+    {
+        while (gameOverScreen.alpha < 1)
+        {
+            gameOverScreen.alpha += Time.deltaTime * fadeInSpeed;
+            if (gameOverScreen.alpha > 1) gameOverScreen.alpha = 1;
+            yield return null;
+        }
     }
 }

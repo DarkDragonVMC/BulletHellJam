@@ -20,6 +20,8 @@ public class EnemyMechanics1 : MonoBehaviour
     public GameObject enemyBullet;
     public float bulletForce;
 
+    private PlayerHealth ph;
+
 
     private void Awake()
     {
@@ -28,6 +30,7 @@ public class EnemyMechanics1 : MonoBehaviour
         posY = this.transform.position.y;
         barrel = this.transform.GetChild(0).gameObject;
         cooldown = timeBetweenShots;
+        ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
     }
 
     public void takeDamage(int amount)
@@ -64,6 +67,7 @@ public class EnemyMechanics1 : MonoBehaviour
 
     private void Shoot()
     {
+        if (ph.dead) return;
         if (cooldown > 0) cooldown -= Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
         if (cooldown != 0) return;
