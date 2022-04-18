@@ -29,6 +29,11 @@ public class Bullet : MonoBehaviour
                 collision.GetComponent<EnemyMechanics1>().takeDamage(damage);
                 Destroy(this.gameObject);
             }
+            if (collision.gameObject.tag == "Enemy3")
+            {
+                collision.GetComponent<EnemyMechanics3>().takeDamage(damage);
+                Destroy(this.gameObject);
+            }
         }
 
         if(this.gameObject.tag == "EnemyBullet")
