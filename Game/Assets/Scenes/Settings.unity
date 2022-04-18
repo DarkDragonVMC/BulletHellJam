@@ -361,12 +361,24 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1848928216}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 0.5
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1871218847}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: updateGlobalVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &142887282
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,88 +559,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219020106}
   m_CullTransparentMesh: 1
---- !u!1 &261785874
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 261785876}
-  - component: {fileID: 261785875}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &261785875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261785874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7829265dc0186c4c9b7b771aae9dd63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Blitz
-    clip: {fileID: 8300000, guid: e4f13bea083937a4c95a9e3acea1d763, type: 3}
-    volume: 0.55
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Shooting
-    clip: {fileID: 8300000, guid: 234429901528fd44397bc6f79738fe08, type: 3}
-    volume: 0.3
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: ShootingEnemy
-    clip: {fileID: 8300000, guid: ef7f90273cc9b954bace282b98c91770, type: 3}
-    volume: 0.4
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: TakeDamage
-    clip: {fileID: 8300000, guid: a61ae3e789a086a468f6b2fca1d7ac2f, type: 3}
-    volume: 0.4
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: TakeDamageEnemy
-    clip: {fileID: 8300000, guid: 79574bbc95c5b7c4b8f5e54f000eaef6, type: 3}
-    volume: 0.4
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Music
-    clip: {fileID: 8300000, guid: b0318fa332a3ef04db2a20cbdbe37f05, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 1
-    source: {fileID: 0}
-  globalVolume: 0.5
---- !u!4 &261785876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261785874}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272288294
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +722,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Sounds
+  m_text: Global Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 655824edb510204449c757037feb21d2, type: 2}
   m_sharedMaterial: {fileID: -6948447511422991842, guid: 655824edb510204449c757037feb21d2, type: 2}
@@ -2083,6 +2013,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848928215}
   m_CullTransparentMesh: 1
+--- !u!1 &1871218846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871218848}
+  - component: {fileID: 1871218847}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1871218847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871218846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7829265dc0186c4c9b7b771aae9dd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Blitz
+    clip: {fileID: 8300000, guid: e4f13bea083937a4c95a9e3acea1d763, type: 3}
+    volume: 0.55
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Shooting
+    clip: {fileID: 8300000, guid: 234429901528fd44397bc6f79738fe08, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShootingEnemy
+    clip: {fileID: 8300000, guid: ef7f90273cc9b954bace282b98c91770, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TakeDamage
+    clip: {fileID: 8300000, guid: a61ae3e789a086a468f6b2fca1d7ac2f, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: TakeDamageEnemy
+    clip: {fileID: 8300000, guid: 79574bbc95c5b7c4b8f5e54f000eaef6, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Music
+    clip: {fileID: 8300000, guid: b0318fa332a3ef04db2a20cbdbe37f05, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  musicSlider: {fileID: 1943542136}
+  soundSlider: {fileID: 128679654}
+  globalVolume: 0.5
+  musicVolume: 1
+--- !u!4 &1871218848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871218846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1943542134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,19 +2184,19 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1093813587}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2
+  m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1871218847}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: OnMusicChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
+    public Slider musicSlider;
+    public Slider soundSlider;
 
     [Range(0f,1f)]
     public float globalVolume;
@@ -40,18 +43,29 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void updateGlobalVolume(float newGlobalVolume)
+    public void updateGlobalVolume()
     {
         AudioSource[] sources = this.GetComponents<AudioSource>();
 
         foreach(AudioSource a in sources)
         {
-            a.volume = a.volume / globalVolume * newGlobalVolume;
+            if (soundSlider.value == 0)
+            {
+                a.volume = 0;
+                break;
+            }
+            if(globalVolume == 0)
+            {
+                a.volume = soundSlider.value;
+                break;
+            }
+            a.volume = a.volume / globalVolume * soundSlider.value;
         }
 
-        globalVolume = newGlobalVolume;
+        globalVolume = soundSlider.value;
     }
 
+    
     void Start()
     {
         Play("Music");
@@ -63,5 +77,23 @@ public class AudioManager : MonoBehaviour
         if (s != null) s.source.Play();
         else Debug.LogWarning("Sound with name " + name + " not found!");
     }
+    public void OnMusicChanged()
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "Music");
+        if (musicSlider.value == 0)
+        {
+            s.source.volume = 0;
+            
+        }
+        if(musicVolume == 0)
+        {
+            s.source.volume = s.volume * musicSlider.value;
+            return;
+        }
+        s.source.volume = s.source.volume / musicVolume * musicSlider.value;
+        musicVolume = musicSlider.value;
+
+    }
+
 
 }
