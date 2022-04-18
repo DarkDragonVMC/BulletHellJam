@@ -809,6 +809,7 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
   globalVolume: 0.5
+  musicVolume: 0
 --- !u!4 &317036703
 Transform:
   m_ObjectHideFlags: 0
@@ -1266,6 +1267,7 @@ GameObject:
   - component: {fileID: 689405219}
   - component: {fileID: 689405218}
   - component: {fileID: 689405221}
+  - component: {fileID: 689405222}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1372,6 +1374,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &689405222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689405217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49bf680ad92bd54195ebc935e88a677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &718591432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,7 +1696,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979813177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.18, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1734,11 +1748,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b51ff6c55300d4ba78aea9c5fa30a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 0
   maxHealth: 3
   startHealth: 3
   shakeDuration: 0.75
-  shakeStrenght: 4
-  hearts: []
+  shakeStrenght: 0.8
   fullHeart: {fileID: 21300000, guid: be7b0f9b2db7b1040a8b28c8101ee1e9, type: 3}
   emptyHeart: {fileID: 21300000, guid: 26b0d55954eef0f488862280438988c2, type: 3}
   emptyHeart2: {fileID: 21300000, guid: a2dfa75824892dc49b8f561ef7fa1e71, type: 3}
