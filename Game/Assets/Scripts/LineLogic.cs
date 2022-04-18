@@ -52,6 +52,8 @@ public class LineLogic : MonoBehaviour
         updateCollision();
 
         FindObjectOfType<AudioManager>().Play("Blitz");
+
+        Destroy(Bullet);
     }
 
     private int nearest(GameObject na)
