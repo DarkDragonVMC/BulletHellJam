@@ -40,6 +40,7 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int amount)
     {
         healthPoints = healthPoints - amount;
+        if (healthPoints < 0) healthPoints = 0;
         updateHealthDisplay();
         FindObjectOfType<AudioManager>().Play("TakeDamage");
         StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
@@ -112,6 +113,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        healthPoints = 0;
+        updateHealthDisplay();
+        //StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
         FindObjectOfType<AudioManager>().Play("Death");
     }
 }

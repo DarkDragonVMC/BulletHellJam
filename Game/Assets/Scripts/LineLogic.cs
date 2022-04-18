@@ -37,7 +37,12 @@ public class LineLogic : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        FindObjectOfType<Oxygen>().loseOxygen();
+        if(collision.tag == "Player") FindObjectOfType<Oxygen>().inside = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player") FindObjectOfType<Oxygen>().inside = false;
     }
 
     public Vector3[] ObjectsToVector3Array(GameObject[] input)
