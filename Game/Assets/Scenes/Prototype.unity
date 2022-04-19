@@ -1030,8 +1030,6 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  musicSlider: {fileID: 0}
-  soundSlider: {fileID: 0}
   globalVolume: 0.5
   musicVolume: 1
 --- !u!4 &317036703
