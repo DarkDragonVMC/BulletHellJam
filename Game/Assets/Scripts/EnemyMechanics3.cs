@@ -21,6 +21,9 @@ public class EnemyMechanics3 : MonoBehaviour
     public float bulletForce;
     public float rotationSpeed;
 
+    public GameObject[] itemDrops;
+    public int droppingPercentage;
+
 
     private void Awake()
     {
@@ -37,6 +40,12 @@ public class EnemyMechanics3 : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("TakeDamageEnemy");
         if (healthPoints <= 0)
         {
+            float value = droppingPercentage * 0.01f;
+            if (Random.value > (1 - value))
+            {
+                int itemNumber = Random.Range(0, itemDrops.Length);
+                Instantiate(itemDrops[itemNumber], this.gameObject.transform.position, this.gameObject.transform.rotation);
+            }
             Destroy(this.gameObject);
             return;
         }

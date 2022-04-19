@@ -6,10 +6,21 @@ public class AmmoPickup : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name != "Player") return;
-        Shooting s = GameObject.Find("Player").GetComponent<Shooting>();
-        s.Ammo++;
-        s.updateAmmoDisplay(s.Ammo);
-        Destroy(this.gameObject);
+        if(this.gameObject.tag == "Ammo")
+        {
+            if (collision.gameObject.name != "Player") return;
+            Shooting s = GameObject.Find("Player").GetComponent<Shooting>();
+            s.Ammo++;
+            s.updateAmmoDisplay(s.Ammo);
+            FindObjectOfType<AudioManager>().Play("ItemPickup");
+            Destroy(this.gameObject);
+        } else if (this.gameObject.tag == "Health")
+        {
+            if (collision.gameObject.name != "Player") return;
+            PlayerHealth ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
+            ph.heal(1);
+            //FindObjectOfType<AudioManager>().Play("Heal");
+            Destroy(this.gameObject);
+        }
     }
 }

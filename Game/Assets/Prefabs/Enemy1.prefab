@@ -198,6 +198,10 @@ MonoBehaviour:
   timeBetweenShots: 1
   enemyBullet: {fileID: 3201409110348124239, guid: 6e6990d43cf346446b5c85f362aa5f04, type: 3}
   bulletForce: 5
+  itemDrops:
+  - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
+  - {fileID: 1848497415494202288, guid: e5e7e40f6de279e4fb642974e433dfd8, type: 3}
+  droppingPercentage: 40
 --- !u!1 &6220846669608012721
 GameObject:
   m_ObjectHideFlags: 0

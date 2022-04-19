@@ -223,6 +223,10 @@ MonoBehaviour:
   enemyBullet: {fileID: 3201409110348124239, guid: f10aaab5ba622b3449a090fa8a4c6de4, type: 3}
   bulletForce: 6
   rotationSpeed: 50
+  itemDrops:
+  - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
+  - {fileID: 1848497415494202288, guid: e5e7e40f6de279e4fb642974e433dfd8, type: 3}
+  droppingPercentage: 1
 --- !u!50 &6418722212937545642
 Rigidbody2D:
   serializedVersion: 4

@@ -794,6 +794,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: ItemPickup
+    clip: {fileID: 8300000, guid: bcc863d69f90b14469ce650bfbea69ce, type: 3}
+    volume: 0.85
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: OxygenRegain
+    clip: {fileID: 8300000, guid: ec14490ca5be94d488e1d4d45c7b149a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   globalVolume: 0.5
   musicVolume: 1
 --- !u!4 &900068484
