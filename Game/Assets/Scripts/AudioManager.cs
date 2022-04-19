@@ -1,4 +1,5 @@
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,8 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     public static AudioManager instance;
-    public Slider musicSlider;
-    public Slider soundSlider;
+    public static Slider musicSlider;
+    public static Slider soundSlider;
 
     [Range(0f,1f)]
     public float globalVolume;
@@ -70,6 +71,10 @@ public class AudioManager : MonoBehaviour
     {
         Play("Music");
     }
+    private void Update()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
     public void Play(string name)
     {
@@ -93,6 +98,22 @@ public class AudioManager : MonoBehaviour
         s.source.volume = s.source.volume / musicVolume * musicSlider.value;
         musicVolume = musicSlider.value;
 
+    }
+
+    public void OnSceneLoaded(Scene current, LoadSceneMode mode)
+    {
+        if (current.name != "Settings") return;
+
+        Invoke("SetSliderChanges", 0.01f);
+    }
+    public void SetSliderChanges()
+    {
+        musicSlider = GameObject.Find("Music").GetComponent<Slider>();
+        soundSlider = GameObject.Find("SFX").GetComponent<Slider>();
+        musicSlider.onValueChanged.AddListener(delegate { OnMusicChanged(); });
+        soundSlider.onValueChanged.AddListener(delegate { updateGlobalVolume(); });
+        musicSlider.value = musicVolume;
+        soundSlider.value = globalVolume;
     }
 
 

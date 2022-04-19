@@ -143,7 +143,7 @@ public class PlayerHealth : MonoBehaviour
         healthPoints = 0;
         updateHealthDisplay();
         StartCoroutine(cameraShake.Shake(shakeDuration, shakeStrenght));
-        FindObjectOfType<AudioManager>().Play("Death");
+        Invoke("PlayDeathSound", 0.4f);
         dead = true;
     }
 
@@ -155,5 +155,9 @@ public class PlayerHealth : MonoBehaviour
             if (gameOverScreen.alpha > 1) gameOverScreen.alpha = 1;
             yield return null;
         }
+    }
+    public void PlayDeathSound()
+    {
+        FindObjectOfType<AudioManager>().Play("Death");
     }
 }
