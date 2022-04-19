@@ -41,6 +41,12 @@ public class Bullet : MonoBehaviour
                 spawnParticleSystem();
                 Destroy(this.gameObject);
             }
+            if (collision.gameObject.tag == "Enemy2")
+            {
+                collision.GetComponent<EnemyMechanics2>().takeDamage(damage);
+                spawnParticleSystem();
+                Destroy(this.gameObject);
+            }
             if (collision.gameObject.tag == "Enemy3")
             {
                 collision.GetComponent<EnemyMechanics3>().takeDamage(damage);

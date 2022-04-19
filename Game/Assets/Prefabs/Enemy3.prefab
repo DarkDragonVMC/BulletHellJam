@@ -219,7 +219,7 @@ MonoBehaviour:
   StartTriggered: 0
   cycleCompleted: 0
   maxHealth: 10
-  timeBetweenShots: 0.5
+  timeBetweenShots: 0.35
   enemyBullet: {fileID: 3201409110348124239, guid: f10aaab5ba622b3449a090fa8a4c6de4, type: 3}
   bulletForce: 6
   rotationSpeed: 50
