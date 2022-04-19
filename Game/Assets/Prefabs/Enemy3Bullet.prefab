@@ -47,8 +47,8 @@ MonoBehaviour:
   m_ComponentVersion: 1
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.55
-  m_Color: {r: 0.99215686, g: 0.90588236, b: 0.29803923, a: 1}
+  m_FalloffIntensity: 0.62
+  m_Color: {r: 0.9686275, g: 0.57254905, b: 0.3372549, a: 1}
   m_Intensity: 0.75
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 1
+  m_PointLightOuterRadius: 2.2
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -121,11 +121,11 @@ GameObject:
   - component: {fileID: 5416644431948244244}
   - component: {fileID: 5329963809680787713}
   - component: {fileID: 6936641149256321158}
-  - component: {fileID: 6194347546970161876}
   - component: {fileID: 1628292084934121575}
+  - component: {fileID: 7875978191485173690}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: AllyBullet
+  m_Name: Enemy3Bullet
+  m_TagString: Enemy3Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +139,7 @@ Transform:
   m_GameObject: {fileID: 3201409110348124239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 595806701548790374}
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35b9b893bce5bbd4d91e9c37a2d36b3e, type: 2}
+  - {fileID: 2100000, guid: bae4856c6a98f1e4385ca041ff9c4c91, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,8 +187,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.99215686, g: 0.90588236, b: 0.29803923, a: 1}
+  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Color: {r: 0.9686275, g: 0.57254905, b: 0.3372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -219,8 +219,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &6194347546970161876
-BoxCollider2D:
+--- !u!114 &1628292084934121575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201409110348124239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ed2233bfa19dd49acf98e7cb96e949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToLive: 4
+  damage: 2
+  isBullet: 1
+  particle: {fileID: 5218623921689613422, guid: 8850ba59a22919f4e940e0009538faf4, type: 3}
+  customColor: {r: 0.9686275, g: 0.57254905, b: 0.3372549, a: 1}
+  customShader: {fileID: 2100000, guid: bae4856c6a98f1e4385ca041ff9c4c91, type: 2}
+--- !u!60 &7875978191485173690
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -236,30 +254,15 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1628292084934121575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3201409110348124239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1ed2233bfa19dd49acf98e7cb96e949, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToLive: 1.25
-  damage: 1
-  isBullet: 1
-  particle: {fileID: 5218623921689613422, guid: 8850ba59a22919f4e940e0009538faf4, type: 3}
-  customColor: {r: 1, g: 1, b: 0.8431373, a: 0}
-  customShader: {fileID: 2100000, guid: 35b9b893bce5bbd4d91e9c37a2d36b3e, type: 2}
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.25}
+      - {x: -0.5, y: 0}
+      - {x: 0, y: -0.25}
+      - {x: 0.5, y: 0}
