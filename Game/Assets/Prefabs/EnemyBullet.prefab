@@ -234,6 +234,9 @@ MonoBehaviour:
   timeToLive: 3
   damage: 1
   isBullet: 1
+  particle: {fileID: 5218623921689613422, guid: 8850ba59a22919f4e940e0009538faf4, type: 3}
+  customColor: {r: 1, g: 0.7176471, b: 0.7294118, a: 0}
+  customShader: {fileID: 2100000, guid: 3ba1416d99e3ac942954b32e2715ec5b, type: 2}
 --- !u!58 &708282766760752951
 CircleCollider2D:
   m_ObjectHideFlags: 0
