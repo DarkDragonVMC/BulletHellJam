@@ -1178,6 +1178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPrefab: {fileID: 8938697940308362231, guid: 13a77562d381a2945b6b637d655cb693, type: 3}
+  size: 0
+  maxSize: 100
+  center: {x: 0, y: 0}
   thickness: 0.5
 --- !u!120 &417604874
 LineRenderer:
@@ -2328,7 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  Ammo: 10
+  Ammo: 99
   bulletForce: 12.5
   timeBetweenShots: 0.45
 --- !u!58 &979813184
