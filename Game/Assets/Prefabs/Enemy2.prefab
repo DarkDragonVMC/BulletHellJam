@@ -156,6 +156,9 @@ MonoBehaviour:
   timeToLive: -1
   damage: 1
   isBullet: 0
+  particle: {fileID: 0}
+  customColor: {r: 0, g: 0, b: 0, a: 0}
+  customShader: {fileID: 0}
 --- !u!58 &5339673455005364456
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -190,3 +193,8 @@ MonoBehaviour:
   timeBetweenShots: 0.5
   enemyBullet: {fileID: 3201409110348124239, guid: 6e6990d43cf346446b5c85f362aa5f04, type: 3}
   bulletForce: 6
+  itemDrops:
+  - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
+  - {fileID: 1848497415494202288, guid: e5e7e40f6de279e4fb642974e433dfd8, type: 3}
+  - {fileID: 1848497415494202288, guid: c652e983609a2ed4f87941eca12598ac, type: 3}
+  droppingPercentage: 2

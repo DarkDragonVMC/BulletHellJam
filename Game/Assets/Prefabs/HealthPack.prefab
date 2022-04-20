@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1848497415494202316}
   - component: {fileID: 1848497415494202317}
-  - component: {fileID: 1848497415494202318}
   - component: {fileID: 1848497415494202319}
+  - component: {fileID: 6460563252375880223}
   m_Layer: 0
-  m_Name: AmmoPickup
-  m_TagString: Ammo
+  m_Name: HealthPack
+  m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 9cb9f0035482f7b4f85aeb46c4f554c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 18ec01504eea18348a896b81cb3f783f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,32 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1848497415494202318
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848497415494202288}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.082971096, y: 0.48168227}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.608551, y: 1.5203323}
-  m_EdgeRadius: 0
 --- !u!114 &1848497415494202319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +99,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 542f3211ec3c1ed4a9529a21812d585a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &6460563252375880223
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848497415494202288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.24, y: 0.22}
+      - {x: -0.63816005, y: 0.22116092}
+      - {x: -0.64, y: -0.64}
+      - {x: 0.64, y: -0.64}
+      - {x: 0.64, y: 0.22}
+      - {x: 0.24, y: 0.22}
+      - {x: 0.24, y: 0.53}
+      - {x: -0.24184026, y: 0.5317196}
 --- !u!1 &7080159466423877276
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +180,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.65
-  m_Color: {r: 0.19215688, g: 0.52156866, b: 0.98823535, a: 1}
+  m_Color: {r: 1, g: 0.759434, b: 0.7718395, a: 1}
   m_Intensity: 1.25
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0

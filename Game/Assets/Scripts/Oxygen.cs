@@ -35,4 +35,27 @@ public class Oxygen : MonoBehaviour
         oxDisplay.value = currentOxygen / maxOxygen;
     }
 
+    public void fillOxygen(float value, float speed)
+    {
+        StartCoroutine(setOxygen(value, speed));
+    }
+
+    private IEnumerator setOxygen(float value, float speed)
+    {
+        if (value > maxOxygen) value = maxOxygen;
+        if (value < 0) value = 0;
+
+        if (speed <= 1) speed = 1.1f;
+
+        while(currentOxygen < value)
+        {
+            Debug.Log("WUHU");
+            currentOxygen += Time.deltaTime * speed;
+            oxDisplay.value = currentOxygen / maxOxygen;
+            yield return null;
+        }
+
+        currentOxygen = value;
+    }
+
 }
