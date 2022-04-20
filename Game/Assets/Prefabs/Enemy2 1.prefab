@@ -196,4 +196,5 @@ MonoBehaviour:
   itemDrops:
   - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
   - {fileID: 1848497415494202288, guid: e5e7e40f6de279e4fb642974e433dfd8, type: 3}
-  droppingPercentage: 1.2
+  - {fileID: 1848497415494202288, guid: c652e983609a2ed4f87941eca12598ac, type: 3}
+  droppingPercentage: 1

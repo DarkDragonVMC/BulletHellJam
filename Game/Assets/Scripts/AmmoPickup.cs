@@ -21,6 +21,13 @@ public class AmmoPickup : MonoBehaviour
             ph.heal(1);
             //FindObjectOfType<AudioManager>().Play("Heal");
             Destroy(this.gameObject);
+        } else if(this.gameObject.tag == "Oxygen")
+        {
+            if (collision.gameObject.name != "Player") return;
+            Oxygen o = GameObject.Find("OxLevel").GetComponent<Oxygen>();
+            o.fillOxygen(o.maxOxygen, 2.75f);
+            FindObjectOfType<AudioManager>().Play("OxygenRegain");
+            Destroy(this.gameObject);
         }
     }
 }
