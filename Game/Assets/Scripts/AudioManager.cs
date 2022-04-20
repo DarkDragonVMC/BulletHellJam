@@ -42,6 +42,8 @@ public class AudioManager : MonoBehaviour
 
             if (s.name == "Music") s.source.volume = s.volume * musicVolume * globalVolume;
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     public void updateGlobalVolume()
@@ -53,14 +55,11 @@ public class AudioManager : MonoBehaviour
             if (soundSlider.value == 0)
             {
                 a.volume = 0;
-                break;
-            }
-            if(globalVolume == 0)
+            } else if(globalVolume == 0)
             {
                 a.volume = soundSlider.value;
-                break;
             }
-            a.volume = a.volume / globalVolume * soundSlider.value;
+            else a.volume = a.volume / globalVolume * soundSlider.value;
         }
 
         globalVolume = soundSlider.value;
@@ -73,7 +72,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     public void Play(string name)
@@ -88,11 +87,13 @@ public class AudioManager : MonoBehaviour
         if (musicSlider.value == 0)
         {
             s.source.volume = 0;
-            
+            musicVolume = musicSlider.value;
+            return;
         }
         if(musicVolume == 0)
         {
             s.source.volume = s.volume * musicSlider.value;
+            musicVolume = musicSlider.value;
             return;
         }
         s.source.volume = s.source.volume / musicVolume * musicSlider.value;
@@ -102,9 +103,9 @@ public class AudioManager : MonoBehaviour
 
     public void OnSceneLoaded(Scene current, LoadSceneMode mode)
     {
-        if (current.name != "Settings") return;
+        if (current.buildIndex != 2) return;
 
-        Invoke("SetSliderChanges", 0.01f);
+        SetSliderChanges();
     }
     public void SetSliderChanges()
     {
