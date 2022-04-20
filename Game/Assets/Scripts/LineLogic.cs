@@ -186,8 +186,6 @@ public class LineLogic : MonoBehaviour
     {
         List<GameObject> toMove = getToMove(newAnchor.transform.position);
 
-        Vector2 center = Vector2.zero;
-
         //Move each anchor closer to the center
         while(updateSize(newAnchor) > maxSize)
         {

@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     public int damage;
     public bool isBullet;
 
+    public bool explosive;
+    public int healPercentage;
+
     public GameObject particle;
     public Color customColor;
     public Material customShader;
