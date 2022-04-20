@@ -16,8 +16,6 @@ public class LineLogic : MonoBehaviour
     public float maxSize;
     public Vector2 center;
 
-    public float thickness;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -119,15 +117,6 @@ public class LineLogic : MonoBehaviour
         {
             verticies[i] = ObjectsToVector3Array(anchors)[i];
         }
-
-        //move every vertex closer to the center
-        updateCenter();
-
-        for (int i = 0; i < 6; i++)
-        {
-            Vector2 corner = verticies[i];
-            verticies[i] = Vector2.MoveTowards(corner, center, thickness);
-        }
         
         area.SetPath(0, verticies);
     }
@@ -185,8 +174,6 @@ public class LineLogic : MonoBehaviour
     private void limitSize(GameObject newAnchor)
     {
         List<GameObject> toMove = getToMove(newAnchor.transform.position);
-
-        Vector2 center = Vector2.zero;
 
         //Move each anchor closer to the center
         while(updateSize(newAnchor) > maxSize)
