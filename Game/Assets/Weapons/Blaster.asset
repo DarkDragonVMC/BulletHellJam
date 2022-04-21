@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Blaster
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 12.5
+  bulletForce: 0.5
   timeBetweenShots: 0.45
-  timeToLive: 1.25
+  timeToLive: 20
   damage: 1
   explosive: 0
+  explosionRadius: 0
   healPercentage: 0
+  healAmount: 0
   pointer: 0
   pointerColor: {r: 0, g: 0, b: 0, a: 0}
   pointerMaterial: {fileID: 0}

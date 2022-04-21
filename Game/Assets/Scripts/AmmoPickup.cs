@@ -19,7 +19,6 @@ public class AmmoPickup : MonoBehaviour
             if (collision.gameObject.name != "Player") return;
             PlayerHealth ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
             ph.heal(1);
-            //FindObjectOfType<AudioManager>().Play("Heal");
             Destroy(this.gameObject);
         } else if(this.gameObject.tag == "Oxygen")
         {

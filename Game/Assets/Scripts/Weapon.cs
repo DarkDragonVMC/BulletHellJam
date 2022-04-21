@@ -15,7 +15,9 @@ public class Weapon : ScriptableObject
     public int damage;
 
     public bool explosive;
+    public float explosionRadius;
     public int healPercentage;
+    public int healAmount;
     public bool pointer;
     public Color pointerColor;
     public Material pointerMaterial;
@@ -29,7 +31,10 @@ public class Weapon : ScriptableObject
         GameObject currentBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
 
         Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+        Vector2 mousePos = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
+        Vector2 temp = firePoint.position;
+        Vector2 lookDir = mousePos - temp;
+        rb.AddForce(lookDir * bulletForce, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play(soundName);
 
         //set Bullet values
@@ -37,7 +42,9 @@ public class Weapon : ScriptableObject
         b.timeToLive = this.timeToLive;
         b.damage = this.damage;
         b.explosive = this.explosive;
+        b.explosionRadius = this.explosionRadius;
         b.healPercentage = this.healPercentage;
+        b.healAmount = this.healAmount;
 
         return currentBullet;
     }

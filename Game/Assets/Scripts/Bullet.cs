@@ -10,7 +10,10 @@ public class Bullet : MonoBehaviour
     public bool isBullet;
 
     public bool explosive;
+    public float explosionRadius;
+
     public int healPercentage;
+    public int healAmount;
 
     public GameObject particle;
     public Color customColor;
@@ -18,13 +21,18 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
-        if(isBullet) Invoke("Expire", timeToLive);
+        if(isBullet) Invoke("startExpiring", 0.001f);
     }
 
     private void Expire()
     {
         Destroy(gameObject);
         return;
+    }
+
+    private void startExpiring()
+    {
+        Invoke("Expire", timeToLive);
     }
 
     private void spawnParticleSystem()
@@ -38,23 +46,38 @@ public class Bullet : MonoBehaviour
     {
         if(this.gameObject.tag == "AllyBullet")
         {
-            if(collision.gameObject.tag == "Enemy")
+            if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy2" || collision.gameObject.tag == "Enemy3")
             {
-                collision.GetComponent<EnemyMechanics1>().takeDamage(damage);
-                spawnParticleSystem();
-                Destroy(this.gameObject);
-            }
-            if (collision.gameObject.tag == "Enemy2")
-            {
-                collision.GetComponent<EnemyMechanics2>().takeDamage(damage);
-                spawnParticleSystem();
-                Destroy(this.gameObject);
-            }
-            if (collision.gameObject.tag == "Enemy3")
-            {
-                collision.GetComponent<EnemyMechanics3>().takeDamage(damage);
-                spawnParticleSystem();
-                Destroy(this.gameObject);
+                if (explosive)
+                {
+                    explode();
+                    return;
+                }
+                else
+                {
+                    //calculate healing
+                    float prob = healPercentage * 0.01f;
+                    if (Random.value > (1 - prob)) FindObjectOfType<PlayerHealth>().heal(healAmount);
+
+                    if (collision.gameObject.tag == "Enemy")
+                    {
+                        collision.GetComponent<EnemyMechanics1>().takeDamage(damage);
+                        spawnParticleSystem();
+                        Destroy(this.gameObject);
+                    }
+                    if (collision.gameObject.tag == "Enemy2")
+                    {
+                        collision.GetComponent<EnemyMechanics2>().takeDamage(damage);
+                        spawnParticleSystem();
+                        Destroy(this.gameObject);
+                    }
+                    if (collision.gameObject.tag == "Enemy3")
+                    {
+                        collision.GetComponent<EnemyMechanics3>().takeDamage(damage);
+                        spawnParticleSystem();
+                        Destroy(this.gameObject);
+                    }
+                }
             }
         }
 
@@ -101,5 +124,12 @@ public class Bullet : MonoBehaviour
                 collision.GetComponent<PlayerHealth>().takeDamage(damage);
             }
         }
+    }
+
+    private void explode()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, explosionRadius);
+        explosive = false;
+        foreach (Collider2D c in hits) OnTriggerEnter2D(c);
     }
 }
