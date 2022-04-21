@@ -23,6 +23,7 @@ public class EnemyMechanics1 : MonoBehaviour
     private PlayerHealth ph;
 
     public GameObject[] itemDrops;
+    public int scoreIncrease;
     public int droppingPercentage;
 
 
@@ -49,6 +50,7 @@ public class EnemyMechanics1 : MonoBehaviour
                 Instantiate(itemDrops[itemNumber], this.gameObject.transform.position, this.gameObject.transform.rotation);
             }
             Destroy(this.gameObject);
+            Score.UpdateScore(scoreIncrease);
             return;
         }
     }
