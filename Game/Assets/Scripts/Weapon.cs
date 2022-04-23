@@ -7,6 +7,7 @@ public class Weapon : ScriptableObject
 {
 
     public new string name;
+    public string description;
 
     public GameObject bullet;
     public float bulletForce;
@@ -26,6 +27,8 @@ public class Weapon : ScriptableObject
     public bool shotgun;
     public int bullets;
     public float spray;
+
+    public Vector2 fpOffset;
 
     public Sprite texture;
     public string soundName;

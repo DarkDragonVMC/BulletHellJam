@@ -10,24 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebde7cc7ae9096046b9bc8bf00947118, type: 3}
-  m_Name: TestShotgun
+  m_Name: AUUUP
   m_EditorClassIdentifier: 
-  name: TestShotgun
+  name: AUUUP
+  description: reeeeeeaaaaaly long
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 2.5
-  timeBetweenShots: 1.4
-  timeToLive: 1.9
-  damage: 1
+  bulletForce: 13
+  timeBetweenShots: 1.6
+  timeToLive: 0.3
+  damage: 2
   explosive: 0
   explosionRadius: 0
   healPercentage: 0
   healAmount: 0
-  pointer: 0
-  pointerColor: {r: 0, g: 0, b: 0, a: 0}
-  pointerMaterial: {fileID: 0}
+  pointer: 1
+  pointerColor: {r: 0, g: 0.34509805, b: 1, a: 0}
+  pointerMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   pointerLength: 100
-  shotgun: 1
-  bullets: 4
-  spray: 1.75
-  texture: {fileID: 0}
+  shotgun: 0
+  bullets: 1
+  spray: 0
+  fpOffset: {x: 0.65, y: 1.85}
+  texture: {fileID: 21300000, guid: 50114cf312826cc43b452018442b3cda, type: 3}
   soundName: Shooting

@@ -15,6 +15,7 @@ TagManager:
   - Ammo
   - Oxygen
   - BShatter
+  - WeaponDrop
   layers:
   - Default
   - TransparentFX

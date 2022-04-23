@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+
+    public bool isWeapon;
+    public Weapon[] weapons;
+    public Weapon w;
+
+    void Awake()
+    {
+        if (!isWeapon) return;
+        int temp = Random.Range(0, weapons.Length);
+        w = weapons[temp];
+        this.GetComponent<SpriteRenderer>().sprite = w.texture;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(this.gameObject.tag == "Ammo")
@@ -26,6 +39,13 @@ public class AmmoPickup : MonoBehaviour
             Oxygen o = GameObject.Find("OxLevel").GetComponent<Oxygen>();
             o.fillOxygen(o.maxOxygen, 2.75f);
             FindObjectOfType<AudioManager>().Play("OxygenRegain");
+            Destroy(this.gameObject);
+        } else if(this.gameObject.tag == "WeaponDrop")
+        {
+            if (collision.gameObject.name != "Player") return;
+            WeaponManager wm = collision.GetComponent<WeaponManager>();
+            wm.changeWeapon(w);
+            FindObjectOfType<AudioManager>().Play("ItemPickup");
             Destroy(this.gameObject);
         }
     }
