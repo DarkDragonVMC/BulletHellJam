@@ -1,6 +1,8 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEditor.Rendering.Universal;
 
 public class SceneManagement : MonoBehaviour
 {
@@ -11,12 +13,14 @@ public class SceneManagement : MonoBehaviour
     public GameObject backToMenuButton;
     public GameObject restartButton;
     public GameObject quitButton;
+    public CanvasGroup pausedScreen;
 
     bool fading = false;
 
     void Awake()
     {
         if (SceneManager.GetActiveScene().name == "MainMenu") SettingsManager.loadSettings(GameObject.Find("Global Volume (Effects)").GetComponent<Volume>());
+        if (pausedScreen) pausedScreen.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -51,7 +55,6 @@ public class SceneManagement : MonoBehaviour
     public void backToMenu()
     {
         SceneManager.LoadScene("MainMenu");
-        Debug.Log("Wohoo");
     }
     public void openTutorial()
     {
@@ -71,6 +74,7 @@ public class SceneManagement : MonoBehaviour
         if (!fading)
         {
             fading = true;
+            pausedScreen.gameObject.SetActive(true);
             backToMenuButton.SetActive(true);
             quitButton.SetActive(true);
             restartButton.SetActive(true);
@@ -111,6 +115,7 @@ public class SceneManagement : MonoBehaviour
                 if (pauseMenu.alpha < 0) pauseMenu.alpha = 0;
                 yield return null;
             }
+            pausedScreen.gameObject.SetActive(false);
             fading = false;
         }
     }

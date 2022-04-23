@@ -73,7 +73,6 @@ public class EnemyMechanics1 : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(EnemySaves);
         if (ph.dead)
         {
             rb.velocity = Vector2.zero;

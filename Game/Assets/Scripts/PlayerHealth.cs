@@ -52,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
         backToMenuButton.SetActive(false);
         restartButton.SetActive(false);
         quitButton.SetActive(false);
+        gameOverScreen.gameObject.SetActive(false);
 
         cameraShake = GameObject.Find("Main Camera").GetComponent<CameraShake>();
     }
@@ -159,6 +160,7 @@ public class PlayerHealth : MonoBehaviour
 
     private IEnumerator fadeIn()
     {
+        gameOverScreen.gameObject.SetActive(true);
         while (gameOverScreen.alpha < 1)
         {
             gameOverScreen.alpha += Time.deltaTime * fadeInSpeed;

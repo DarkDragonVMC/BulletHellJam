@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Blaster
   description: Standard weapon
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 4
+  bulletForce: 1.9
   timeBetweenShots: 0.45
   timeToLive: 3
   damage: 1

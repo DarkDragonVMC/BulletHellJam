@@ -724,8 +724,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Global Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 655824edb510204449c757037feb21d2, type: 2}
-  m_sharedMaterial: {fileID: -6948447511422991842, guid: 655824edb510204449c757037feb21d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
+  m_sharedMaterial: {fileID: -6580988126190787604, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1248,8 +1248,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Brightness
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 655824edb510204449c757037feb21d2, type: 2}
-  m_sharedMaterial: {fileID: -6948447511422991842, guid: 655824edb510204449c757037feb21d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
+  m_sharedMaterial: {fileID: -6580988126190787604, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2026,8 +2026,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 655824edb510204449c757037feb21d2, type: 2}
-  m_sharedMaterial: {fileID: -6948447511422991842, guid: 655824edb510204449c757037feb21d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
+  m_sharedMaterial: {fileID: -6580988126190787604, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2163,8 +2163,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 655824edb510204449c757037feb21d2, type: 2}
-  m_sharedMaterial: {fileID: -6948447511422991842, guid: 655824edb510204449c757037feb21d2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
+  m_sharedMaterial: {fileID: -6580988126190787604, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2852,6 +2852,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23535fb89200e54bb10bc11e74618b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  fadeInSpeed: 0
+  backToMenuButton: {fileID: 0}
+  restartButton: {fileID: 0}
+  quitButton: {fileID: 0}
+  pausedScreen: {fileID: 0}
 --- !u!4 &1475704500691784157
 Transform:
   m_ObjectHideFlags: 0

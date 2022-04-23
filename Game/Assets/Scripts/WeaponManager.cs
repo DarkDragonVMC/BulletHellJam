@@ -19,6 +19,7 @@ public class WeaponManager : MonoBehaviour
     private Image wpSprite;
     private TMPro.TextMeshProUGUI wpName;
     private TMPro.TextMeshProUGUI wpDesc;
+    private Button wpCont;
 
     public float displaySize;
 
@@ -37,8 +38,12 @@ public class WeaponManager : MonoBehaviour
         wpSprite = GameObject.Find("WeaponSprite").GetComponent<Image>();
         wpName = GameObject.Find("WPName").GetComponent<TMPro.TextMeshProUGUI>();
         wpDesc = GameObject.Find("WPDesc").GetComponent<TMPro.TextMeshProUGUI>();
+        wpCont = GameObject.Find("WPCont").GetComponent<Button>();
 
         firePoint = GameObject.Find("FirePoint");
+
+        wpCont.gameObject.SetActive(false);
+        weaponPickup.gameObject.SetActive(false);
 
         setupWeapon();
     }
@@ -89,6 +94,9 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator fadeIn()
     {
+        wpCont.gameObject.SetActive(true);
+        weaponPickup.gameObject.SetActive(true);
+
         //setup screen
         wpSprite.sprite = currentWeapon.texture;
         wpSprite.SetNativeSize();
@@ -117,5 +125,8 @@ public class WeaponManager : MonoBehaviour
             if (weaponPickup.alpha < 0) weaponPickup.alpha = 0;
             yield return null;
         }
+
+        wpCont.gameObject.SetActive(false);
+        weaponPickup.gameObject.SetActive(false);
     }
 }

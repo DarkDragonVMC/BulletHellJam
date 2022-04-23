@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Buggy
   description: Not a Valorant reference at all
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 2
+  bulletForce: 1.3
   timeBetweenShots: 1.1
   timeToLive: 0.8
   damage: 1
