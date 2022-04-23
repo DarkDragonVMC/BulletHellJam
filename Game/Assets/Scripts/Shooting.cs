@@ -46,6 +46,7 @@ public class Shooting : MonoBehaviour
         {
             if (currentBullet != null && Ammo >= 1)
             {
+                Score.UpdateScore(1);
                 Ammo--;
                 updateAmmoDisplay(Ammo);
                 ll.updateAnchor(currentBullet);

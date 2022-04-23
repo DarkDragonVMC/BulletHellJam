@@ -42,11 +42,6 @@ public class Bullet : MonoBehaviour
         return;
     }
 
-    private void startExpiring()
-    {
-        Invoke("Expire", timeToLive);
-    }
-
     private void spawnParticleSystem()
     {
         GameObject p = Instantiate(particle, this.transform.position, this.transform.rotation);
