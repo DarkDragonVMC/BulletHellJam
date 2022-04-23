@@ -113,6 +113,5 @@ public class SceneManagement : MonoBehaviour
             }
             fading = false;
         }
-
     }
 }

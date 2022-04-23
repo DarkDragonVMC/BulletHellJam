@@ -56,7 +56,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(this.gameObject.tag == "AllyBullet")
+        if (this.gameObject.tag == "AllyBullet")
         {
             if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy2" || collision.gameObject.tag == "Enemy3")
             {
@@ -93,9 +93,9 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if(this.gameObject.tag == "EnemyBullet")
+        if (this.gameObject.tag == "EnemyBullet")
         {
-            if(collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 collision.GetComponent<PlayerHealth>().takeDamage(damage);
                 spawnParticleSystem();
@@ -115,10 +115,10 @@ public class Bullet : MonoBehaviour
 
         if (this.gameObject.tag == "Enemy")
         {
-            if(collision.gameObject.tag == "Player")
+            if (collision.gameObject.tag == "Player")
             {
                 collision.GetComponent<PlayerHealth>().takeDamage(damage);
-            } 
+            }
         }
 
         if (this.gameObject.tag == "Enemy2")

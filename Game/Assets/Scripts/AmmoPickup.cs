@@ -22,6 +22,7 @@ public class AmmoPickup : MonoBehaviour
         if(this.gameObject.tag == "Ammo")
         {
             if (collision.gameObject.name != "Player") return;
+            Score.UpdateScore(1);
             Shooting s = GameObject.Find("Player").GetComponent<Shooting>();
             s.Ammo++;
             s.updateAmmoDisplay(s.Ammo);
@@ -30,12 +31,14 @@ public class AmmoPickup : MonoBehaviour
         } else if (this.gameObject.tag == "Health")
         {
             if (collision.gameObject.name != "Player") return;
+            Score.UpdateScore(1);
             PlayerHealth ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
             ph.heal(1);
             Destroy(this.gameObject);
         } else if(this.gameObject.tag == "Oxygen")
         {
             if (collision.gameObject.name != "Player") return;
+            Score.UpdateScore(1);
             Oxygen o = GameObject.Find("OxLevel").GetComponent<Oxygen>();
             o.fillOxygen(o.maxOxygen, 2.75f);
             FindObjectOfType<AudioManager>().Play("OxygenRegain");

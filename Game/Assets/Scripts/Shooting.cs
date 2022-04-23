@@ -46,6 +46,7 @@ public class Shooting : MonoBehaviour
         {
             if (currentBullet != null && Ammo >= 1)
             {
+                Score.UpdateScore(1);
                 Ammo--;
                 updateAmmoDisplay(Ammo);
                 ll.updateAnchor(currentBullet);
@@ -57,7 +58,7 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {
         currentBullet = wm.currentWeapon.Shoot(firePoint);
-        cooldown = timeBetweenShots; 
+        cooldown = timeBetweenShots;
     }
 
     public void updateAmmoDisplay(int newNumber)

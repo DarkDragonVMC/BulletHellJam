@@ -29,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (ph.dead) return;
+        if (SceneManagement.paused)
+        {
+            movement.x = 0;
+            movement.y = 0;
+            return;
+        }
+
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
 

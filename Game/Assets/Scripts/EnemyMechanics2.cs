@@ -21,6 +21,7 @@ public class EnemyMechanics2 : MonoBehaviour
     private PlayerHealth ph;
 
     public GameObject[] itemDrops;
+    public int scoreIncrease;
     public int droppingPercentage;
 
     private void Awake()
@@ -34,6 +35,16 @@ public class EnemyMechanics2 : MonoBehaviour
 
     public void Update()
     {
+        if (ph.dead)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        if (SceneManagement.paused)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         timer = timer + timerSpeed * Time.deltaTime;
         if(timer > 2)
         {
@@ -81,11 +92,14 @@ public class EnemyMechanics2 : MonoBehaviour
                 Instantiate(itemDrops[itemNumber], this.gameObject.transform.position, this.gameObject.transform.rotation);
             }
             Destroy(this.gameObject);
+            Score.UpdateScore(scoreIncrease);
             return;
         }
     }
     private void Shoot()
     {
+        if (ph.dead) return;
+        if (SceneManagement.paused) return;
         if (cooldown > 0) cooldown -= Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
         if (cooldown != 0) return;
@@ -95,6 +109,7 @@ public class EnemyMechanics2 : MonoBehaviour
         bulletRb.AddForce(barrel.transform.up * bulletForce, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("ShootingEnemy");
         cooldown = timeBetweenShots;
+        EnemyMechanics1.BulletSaves.Add(bullet.GetComponent<Rigidbody2D>());
     }
 
     private void Rotate()

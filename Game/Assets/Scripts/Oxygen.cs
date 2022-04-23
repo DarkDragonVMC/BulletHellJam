@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +19,8 @@ public class Oxygen : MonoBehaviour
 
     void Update()
     {
+        if (FindObjectOfType<PlayerHealth>().dead) return;
+        if (SceneManagement.paused) return;
         changeOxygen(inside);
     }
 
