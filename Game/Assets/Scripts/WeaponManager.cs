@@ -55,5 +55,8 @@ public class WeaponManager : MonoBehaviour
             lr.material = currentWeapon.pointerMaterial;
         }
         else GameObject.Find("Pointer").SetActive(false);
+
+        //general setup
+        shooting.timeBetweenShots = currentWeapon.timeBetweenShots;
     }
 }

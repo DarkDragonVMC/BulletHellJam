@@ -2517,7 +2517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b50a51c65eff54facf869e85327b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeapon: {fileID: 11400000, guid: 017e2149847d6ae40af77d25091eb0ff, type: 2}
+  currentWeapon: {fileID: 11400000, guid: ef4021eaac27db94e83898099bc028df, type: 2}
 --- !u!1 &1004019793
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2706,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_TargetDisplay: 0
 --- !u!224 &1015221333
 RectTransform:
