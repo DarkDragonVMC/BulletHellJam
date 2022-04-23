@@ -15,13 +15,25 @@ public class Bullet : MonoBehaviour
     public int healPercentage;
     public int healAmount;
 
+    float coolDown;
+
     public GameObject particle;
     public Color customColor;
     public Material customShader;
 
     void Awake()
     {
-        if(isBullet) Invoke("startExpiring", 0.001f);
+        coolDown = timeToLive;
+    }
+
+    private void Update()
+    {
+        if (SceneManagement.paused) return;
+        coolDown -= Time.deltaTime;
+        if(coolDown <= 0 && isBullet)
+        {
+            Expire();
+        }
     }
 
     private void Expire()

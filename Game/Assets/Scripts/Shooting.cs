@@ -37,6 +37,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (ph.dead) return;
+        if (SceneManagement.paused) return;
         if (cooldown > 0) cooldown = cooldown - Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
 

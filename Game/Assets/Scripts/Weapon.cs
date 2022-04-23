@@ -47,6 +47,7 @@ public class Weapon : ScriptableObject
             Vector2 lookDir = mousePos - temp;
             rb.AddForce(lookDir * bulletForce, ForceMode2D.Impulse);
             FindObjectOfType<AudioManager>().Play(soundName);
+            EnemyMechanics1.BulletSaves.Add(currentBullet.GetComponent<Rigidbody2D>());
 
             //set Bullet values
             Bullet b = currentBullet.GetComponent<Bullet>();
@@ -69,6 +70,7 @@ public class Weapon : ScriptableObject
                 Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
                 Vector2 mousePos = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
                 Vector2 temp = firePoint.position + offset;
+                EnemyMechanics1.BulletSaves.Add(rb);
 
                 //rerandomize
                 Vector2 offset2 = Vector2.zero;
