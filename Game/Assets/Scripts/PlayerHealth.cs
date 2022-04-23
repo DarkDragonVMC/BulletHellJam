@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public float shakeDuration;
     public float shakeStrenght;
 
+    private SceneManagement sm;
+
     //Health Display
     private Image[] hearts;
     public Sprite fullHeart;
@@ -27,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
     private GameObject backToMenuButton;
     private GameObject restartButton;
     private GameObject quitButton;
+    private GameObject pauseMenu;
 
     public bool dead;
 
@@ -42,6 +45,9 @@ public class PlayerHealth : MonoBehaviour
         backToMenuButton = GameObject.Find("BackToMenu");
         restartButton = GameObject.Find("Restart");
         quitButton = GameObject.Find("Quit");
+        pauseMenu = GameObject.Find("PauseMenu");
+
+        sm = GameObject.Find("SceneManager").GetComponent<SceneManagement>();
 
         backToMenuButton.SetActive(false);
         restartButton.SetActive(false);
@@ -134,11 +140,14 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         if (dead) return;
+        pauseMenu.SetActive(false);
         backToMenuButton.SetActive(true);
         restartButton.SetActive(true);
         quitButton.SetActive(true);
 
         StartCoroutine(fadeIn());
+
+        StartCoroutine(sm.fadeOut());
 
         healthPoints = 0;
         updateHealthDisplay();

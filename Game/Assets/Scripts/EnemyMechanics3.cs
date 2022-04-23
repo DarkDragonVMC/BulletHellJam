@@ -25,6 +25,8 @@ public class EnemyMechanics3 : MonoBehaviour
     public int scoreIncrease;
     public int droppingPercentage;
 
+    private PlayerHealth ph;
+
 
     private void Awake()
     {
@@ -33,6 +35,7 @@ public class EnemyMechanics3 : MonoBehaviour
         posY = this.transform.position.y;
         barrel = this.transform.GetChild(0).gameObject;
         cooldown = timeBetweenShots;
+        ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
     }
 
     public void takeDamage(int amount)
@@ -62,20 +65,21 @@ public class EnemyMechanics3 : MonoBehaviour
 
     private void Update()
     {
+        if (ph.dead) return;
+        if (SceneManagement.paused) return;
         rb.rotation = rb.rotation + rotationSpeed * Time.deltaTime;
         Shoot();
     }
 
-    private void Rotate()
-    {
-        Vector2 player = GameObject.Find("Player").transform.position;
-        Vector2 lookDir = player - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
-    }
+    
 
     private void Shoot()
     {
+        if (ph.dead) return;
+        if (SceneManagement.paused)
+        {
+            return;
+        }
         if (cooldown > 0) cooldown -= Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
         if (cooldown != 0) return;
@@ -85,6 +89,7 @@ public class EnemyMechanics3 : MonoBehaviour
         bulletRb.AddForce(barrel.transform.up * bulletForce, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("ShootingEnemy");
         cooldown = timeBetweenShots;
+        EnemyMechanics1.BulletSaves.Add(bullet.GetComponent<Rigidbody2D>());
     }
 
     public void setToFalse()
@@ -107,7 +112,8 @@ public class EnemyMechanics3 : MonoBehaviour
 
     public void Move()
     {
-        
+        if (ph.dead) return;
+        if (SceneManagement.paused) return;
         Vector2 MoveX = new Vector2(speed, 0);
         Vector2 MoveY = new Vector2(0, speed);
         if(XorY == 0)

@@ -35,6 +35,7 @@ public class Shooting : MonoBehaviour
     void Update()
     {
         if (ph.dead) return;
+        if (SceneManagement.paused) return;
         if (cooldown > 0) cooldown = cooldown - Time.deltaTime;
         if (cooldown < 0) cooldown = 0;
 
@@ -58,7 +59,8 @@ public class Shooting : MonoBehaviour
         Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
         rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("Shooting");
-        cooldown = timeBetweenShots; 
+        cooldown = timeBetweenShots;
+        EnemyMechanics1.BulletSaves.Add(currentBullet.GetComponent<Rigidbody2D>());
     }
 
     public void updateAmmoDisplay(int newNumber)

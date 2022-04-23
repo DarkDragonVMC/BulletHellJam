@@ -9,13 +9,25 @@ public class Bullet : MonoBehaviour
     public int damage;
     public bool isBullet;
 
+    float coolDown;
+
     public GameObject particle;
     public Color customColor;
     public Material customShader;
 
     void Awake()
     {
-        if(isBullet) Invoke("Expire", timeToLive);
+        coolDown = timeToLive;
+    }
+
+    private void Update()
+    {
+        if (SceneManagement.paused) return;
+        coolDown -= Time.deltaTime;
+        if(coolDown <= 0 && isBullet)
+        {
+            Expire();
+        }
     }
 
     private void Expire()

@@ -13,16 +13,20 @@ public class EnemySpawning : MonoBehaviour
     public GameObject E2;
     public GameObject E3;
     public int whichEnemy;
+    PlayerHealth ph;
 
 
     private void Awake()
     {
         globalTimer = Random.Range(8, 20);
+        ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
 
     }
 
     private void Update()
     {
+        if (SceneManagement.paused) return;
+        if (ph.dead) return;
         globalTimer -= Time.deltaTime;
         if(globalTimer <= 0)
         {
@@ -54,19 +58,20 @@ public class EnemySpawning : MonoBehaviour
     }
     public void SpawnEnemy()
     {
+        GameObject Enemy;
         whichEnemy = Random.Range(1, 101);
         if(whichEnemy >= 1 && whichEnemy <= 50)
         {
-            Instantiate(E1, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
+            Enemy = Instantiate(E1, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
         }else if
         (whichEnemy >= 51 && whichEnemy <= 80)
         {
-            Instantiate(E2, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
-        }else if
-        (whichEnemy >= 81 && whichEnemy <= 100)
+            Enemy = Instantiate(E2, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
+        }else
         {
-            Instantiate(E3, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
+            Enemy = Instantiate(E3, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
         }
+        EnemyMechanics1.EnemySaves.Add(Enemy.GetComponent<Rigidbody2D>());
     }
 
 
