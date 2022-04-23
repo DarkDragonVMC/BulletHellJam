@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
     {
         if (SceneManagement.paused) return;
         coolDown -= Time.deltaTime;
-        if (coolDown <= 0 && isBullet)
+        if(coolDown <= 0 && isBullet)
         {
             Expire();
         }
@@ -40,6 +40,11 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
         return;
+    }
+
+    private void startExpiring()
+    {
+        Invoke("Expire", timeToLive);
     }
 
     private void spawnParticleSystem()
@@ -53,7 +58,7 @@ public class Bullet : MonoBehaviour
     {
         if (this.gameObject.tag == "AllyBullet")
         {
-            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy2" || collision.gameObject.tag == "Enemy3")
+            if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy2" || collision.gameObject.tag == "Enemy3")
             {
                 if (explosive)
                 {

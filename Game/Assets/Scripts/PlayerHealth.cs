@@ -82,6 +82,7 @@ public class PlayerHealth : MonoBehaviour
         healthPoints = healthPoints + amount;
         if (healthPoints > maxHealth) healthPoints = maxHealth;
         updateHealthDisplay();
+        FindObjectOfType<AudioManager>().Play("ItemPickup");
     }
 
     public void updateHealthDisplay()

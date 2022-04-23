@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebde7cc7ae9096046b9bc8bf00947118, type: 3}
+  m_Name: AUUUP
+  m_EditorClassIdentifier: 
+  name: AUUUP
+  description: reeeeeeaaaaaly long
+  bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
+  bulletForce: 13
+  timeBetweenShots: 1.6
+  timeToLive: 0.3
+  damage: 2
+  explosive: 0
+  explosionRadius: 0
+  healPercentage: 0
+  healAmount: 0
+  pointer: 1
+  pointerColor: {r: 0, g: 0.34509805, b: 1, a: 0}
+  pointerMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  pointerLength: 100
+  shotgun: 0
+  bullets: 1
+  spray: 0
+  fpOffset: {x: 0.65, y: 1.85}
+  texture: {fileID: 21300000, guid: 50114cf312826cc43b452018442b3cda, type: 3}
+  soundName: Shooting

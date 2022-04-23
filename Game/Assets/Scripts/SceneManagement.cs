@@ -25,7 +25,7 @@ public class SceneManagement : MonoBehaviour
 
         backToMenuButton.SetActive(false);
         quitButton.SetActive(false);
-        restartButton.SetActive(false);  
+        restartButton.SetActive(false);
     }
 
     private void Update()
@@ -88,7 +88,7 @@ public class SceneManagement : MonoBehaviour
                 yield return null;
             }
             fading = false;
-        }        
+        }
     }
 
     public IEnumerator fadeOut()
@@ -113,6 +113,5 @@ public class SceneManagement : MonoBehaviour
             }
             fading = false;
         }
-        
     }
 }

@@ -44,26 +44,24 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void updateGlobalVolume()
+    public void updateGlobalVolume(float value)
     {
         AudioSource[] sources = this.GetComponents<AudioSource>();
 
         foreach(AudioSource a in sources)
         {
-            if (soundSlider.value == 0)
+            if (value == 0)
             {
                 a.volume = 0;
-                break;
-            }
-            if(globalVolume == 0)
+            } else if(globalVolume == 0)
             {
-                a.volume = soundSlider.value;
-                break;
+                if (a.clip.name == "Music") a.volume = value * musicVolume;
+                else a.volume = value;
             }
-            a.volume = a.volume / globalVolume * soundSlider.value;
+            else a.volume = a.volume / globalVolume * value;
         }
 
-        globalVolume = soundSlider.value;
+        globalVolume = value;
     }
 
     
@@ -73,7 +71,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
+
     }
 
     public void Play(string name)
@@ -82,39 +80,23 @@ public class AudioManager : MonoBehaviour
         if (s != null) s.source.Play();
         else Debug.LogWarning("Sound with name " + name + " not found!");
     }
-    public void OnMusicChanged()
+    public void OnMusicChanged(float value)
     {
         Sound s = Array.Find(sounds, sound => sound.name == "Music");
-        if (musicSlider.value == 0)
+        if (value == 0)
         {
             s.source.volume = 0;
-            
+            musicVolume = value;
+            return;
         }
         if(musicVolume == 0)
         {
-            s.source.volume = s.volume * musicSlider.value;
+            s.source.volume = s.volume * value * globalVolume;
+            musicVolume = value;
             return;
         }
-        s.source.volume = s.source.volume / musicVolume * musicSlider.value;
-        musicVolume = musicSlider.value;
+        s.source.volume = s.source.volume / musicVolume * value;
+        musicVolume = value;
 
     }
-
-    public void OnSceneLoaded(Scene current, LoadSceneMode mode)
-    {
-        if (current.name != "Settings") return;
-
-        Invoke("SetSliderChanges", 0.01f);
-    }
-    public void SetSliderChanges()
-    {
-        musicSlider = GameObject.Find("Music").GetComponent<Slider>();
-        soundSlider = GameObject.Find("SFX").GetComponent<Slider>();
-        musicSlider.onValueChanged.AddListener(delegate { OnMusicChanged(); });
-        soundSlider.onValueChanged.AddListener(delegate { updateGlobalVolume(); });
-        musicSlider.value = musicVolume;
-        soundSlider.value = globalVolume;
-    }
-
-
 }
