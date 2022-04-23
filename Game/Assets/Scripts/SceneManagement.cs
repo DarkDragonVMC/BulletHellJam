@@ -14,7 +14,10 @@ public class SceneManagement : MonoBehaviour
 
     bool fading = false;
 
-
+    void Awake()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu") SettingsManager.loadSettings(GameObject.Find("Global Volume (Effects)").GetComponent<Volume>());
+    }
 
     private void Start()
     {

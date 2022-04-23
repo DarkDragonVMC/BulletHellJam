@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     private GameObject currentBullet;
     private TMPro.TextMeshProUGUI ammoDisplay;
     private PlayerHealth ph;
+    private WeaponManager wm;
 
     public int Ammo = 10;
 
@@ -26,6 +27,7 @@ public class Shooting : MonoBehaviour
         ll = GameObject.Find("Borders").GetComponent<LineLogic>();
         ammoDisplay = GameObject.Find("ammoDisplay").GetComponent<TMPro.TextMeshProUGUI>();
         ph = this.GetComponent<PlayerHealth>();
+        wm = this.GetComponent<WeaponManager>();
         updateAmmoDisplay(Ammo);
 
         cooldown = 0f;
@@ -44,7 +46,6 @@ public class Shooting : MonoBehaviour
         {
             if (currentBullet != null && Ammo >= 1)
             {
-                Score.UpdateScore(1);
                 Ammo--;
                 updateAmmoDisplay(Ammo);
                 ll.updateAnchor(currentBullet);
@@ -55,12 +56,8 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
-        currentBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = currentBullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
-        FindObjectOfType<AudioManager>().Play("Shooting");
+        currentBullet = wm.currentWeapon.Shoot(firePoint);
         cooldown = timeBetweenShots;
-        EnemyMechanics1.BulletSaves.Add(currentBullet.GetComponent<Rigidbody2D>());
     }
 
     public void updateAmmoDisplay(int newNumber)
