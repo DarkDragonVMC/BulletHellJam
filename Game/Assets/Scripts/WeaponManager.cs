@@ -96,6 +96,11 @@ public class WeaponManager : MonoBehaviour
     {
         wpCont.gameObject.SetActive(true);
         weaponPickup.gameObject.SetActive(true);
+        Score.scoreGo.SetActive(false);
+
+        EnemyMechanics1.saveBulletVelocity();
+        EnemyMechanics1.saveEnemyVelocity();
+        SceneManagement.paused = true;
 
         //setup screen
         wpSprite.sprite = currentWeapon.texture;
@@ -110,6 +115,7 @@ public class WeaponManager : MonoBehaviour
             if (weaponPickup.alpha > 1) weaponPickup.alpha = 1;
             yield return null;
         }
+        Time.timeScale = 0;
     }
 
     public void callFadeOut()
@@ -119,6 +125,8 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator fadeOut()
     {
+        Score.scoreGo.SetActive(true);
+        Time.timeScale = 1;
         while (weaponPickup.alpha > 0)
         {
             weaponPickup.alpha -= Time.deltaTime * fadeSpeed;
@@ -126,6 +134,9 @@ public class WeaponManager : MonoBehaviour
             yield return null;
         }
 
+        EnemyMechanics1.loadBulletVelocity();
+        EnemyMechanics1.loadEnemyVelocity();
+        SceneManagement.paused = false;
         wpCont.gameObject.SetActive(false);
         weaponPickup.gameObject.SetActive(false);
     }

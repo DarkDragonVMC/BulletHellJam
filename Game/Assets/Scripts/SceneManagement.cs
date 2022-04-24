@@ -34,6 +34,7 @@ public class SceneManagement : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex != 1) return;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (paused)
@@ -74,6 +75,7 @@ public class SceneManagement : MonoBehaviour
         if (!fading)
         {
             fading = true;
+            Score.scoreGo.SetActive(false);
             pausedScreen.gameObject.SetActive(true);
             backToMenuButton.SetActive(true);
             quitButton.SetActive(true);
@@ -100,6 +102,7 @@ public class SceneManagement : MonoBehaviour
         if (!fading)
         {
             fading = true;
+            Score.scoreGo.SetActive(true);
             backToMenuButton.SetActive(false);
             quitButton.SetActive(false);
             restartButton.SetActive(false);

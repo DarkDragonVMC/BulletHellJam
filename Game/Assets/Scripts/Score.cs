@@ -4,10 +4,12 @@ using UnityEngine;
 public class Score : MonoBehaviour
 {
     public static int score;
+    public static GameObject scoreGo;
     float timeToIncreaseScore;
 
     private void Start()
     {
+        scoreGo = GameObject.Find("Score");
         score = 0;
         UpdateScore(0);
         timeToIncreaseScore = 60;
@@ -26,6 +28,6 @@ public class Score : MonoBehaviour
     public static void UpdateScore(int amount)
     {
         score += amount;
-        GameObject.Find("Score").GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
+        scoreGo.GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + score;
     }
 }

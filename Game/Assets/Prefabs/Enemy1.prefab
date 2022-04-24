@@ -156,6 +156,11 @@ MonoBehaviour:
   timeToLive: -1
   damage: 1
   isBullet: 0
+  globalExplosive: 0
+  explosive: 0
+  explosionRadius: 0
+  healPercentage: 0
+  healAmount: 0
   particle: {fileID: 0}
   customColor: {r: 0, g: 0, b: 0, a: 0}
   customShader: {fileID: 0}
@@ -202,8 +207,11 @@ MonoBehaviour:
   - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
   - {fileID: 1848497415494202288, guid: e5e7e40f6de279e4fb642974e433dfd8, type: 3}
   - {fileID: 1848497415494202288, guid: c652e983609a2ed4f87941eca12598ac, type: 3}
+  - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
+  - {fileID: 1848497415494202288, guid: 542749f6156001b4c855b1c549ec0e16, type: 3}
+  weaponDrop: {fileID: 1848497415494202288, guid: 0e990109f6260654695fef9743d49ffc, type: 3}
   scoreIncrease: 1
-  droppingPercentage: 40
+  droppingPercentage: 60
 --- !u!1 &6220846669608012721
 GameObject:
   m_ObjectHideFlags: 0

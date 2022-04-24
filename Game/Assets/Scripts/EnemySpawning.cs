@@ -20,6 +20,7 @@ public class EnemySpawning : MonoBehaviour
     {
         globalTimer = Random.Range(8, 20);
         ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
+        Invoke("GenerateEnemyCoords", 4f);
 
     }
 
@@ -31,7 +32,7 @@ public class EnemySpawning : MonoBehaviour
         if(globalTimer <= 0)
         {
             GenerateEnemyCoords();
-            globalTimer = Random.Range(10, 20);
+            globalTimer = Random.Range(8, 13);
         }
     }
 

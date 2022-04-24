@@ -50,7 +50,6 @@ public class Oxygen : MonoBehaviour
 
         while(currentOxygen < value)
         {
-            Debug.Log("WUHU");
             currentOxygen += Time.deltaTime * speed;
             oxDisplay.value = currentOxygen / maxOxygen;
             yield return null;

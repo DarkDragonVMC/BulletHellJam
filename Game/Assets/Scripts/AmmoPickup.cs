@@ -24,7 +24,7 @@ public class AmmoPickup : MonoBehaviour
             if (collision.gameObject.name != "Player") return;
             Score.UpdateScore(1);
             Shooting s = GameObject.Find("Player").GetComponent<Shooting>();
-            s.Ammo++;
+            s.Ammo += 2;
             s.updateAmmoDisplay(s.Ammo);
             FindObjectOfType<AudioManager>().Play("ItemPickup");
             Destroy(this.gameObject);

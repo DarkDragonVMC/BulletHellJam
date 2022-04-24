@@ -31,6 +31,7 @@ public class Weapon : ScriptableObject
     public Vector2 fpOffset;
 
     public Sprite texture;
+    public Sprite secondTexture;
     public string soundName;
 
     public GameObject Shoot(Transform firePoint)
@@ -45,6 +46,7 @@ public class Weapon : ScriptableObject
             Vector2 mousePos = GameObject.Find("Main Camera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition);
             Vector2 temp = firePoint.position;
             Vector2 lookDir = mousePos - temp;
+            lookDir = lookDir.normalized;
             rb.AddForce(lookDir * bulletForce, ForceMode2D.Impulse);
             FindObjectOfType<AudioManager>().Play(soundName);
             EnemyMechanics1.BulletSaves.Add(currentBullet.GetComponent<Rigidbody2D>());
@@ -54,6 +56,7 @@ public class Weapon : ScriptableObject
             b.timeToLive = this.timeToLive;
             b.damage = this.damage;
             b.explosive = this.explosive;
+            b.globalExplosive = this.explosive;
             b.explosionRadius = this.explosionRadius;
             b.healPercentage = this.healPercentage;
             b.healAmount = this.healAmount;
@@ -85,6 +88,7 @@ public class Weapon : ScriptableObject
                 b.timeToLive = this.timeToLive;
                 b.damage = this.damage;
                 b.explosive = this.explosive;
+                b.globalExplosive = this.explosive;
                 b.explosionRadius = this.explosionRadius;
                 b.healPercentage = this.healPercentage;
                 b.healAmount = this.healAmount;

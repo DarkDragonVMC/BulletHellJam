@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public bool isBullet;
 
+    public bool globalExplosive;
     public bool explosive;
     public float explosionRadius;
 
@@ -23,6 +24,12 @@ public class Bullet : MonoBehaviour
 
     void Awake()
     {
+        coolDown = Mathf.Infinity;
+        Invoke("startExpiring", 0.1f);
+    }
+
+    private void startExpiring()
+    {
         coolDown = timeToLive;
     }
 
@@ -30,26 +37,25 @@ public class Bullet : MonoBehaviour
     {
         if (SceneManagement.paused) return;
         coolDown -= Time.deltaTime;
-        if(coolDown <= 0 && isBullet)
+        if(coolDown <= 0 && isBullet && !globalExplosive)
         {
             Expire();
+        } else if(coolDown <= 0 && isBullet && explosive)
+        {
+            explode();
         }
     }
 
     private void Expire()
     {
+        if (globalExplosive || explosive) return;
         Destroy(gameObject);
         return;
     }
 
-    private void startExpiring()
-    {
-        Invoke("Expire", timeToLive);
-    }
-
     private void spawnParticleSystem()
     {
-        GameObject p = Instantiate(particle, this.transform.position, this.transform.rotation);
+        GameObject p = Instantiate(particle, this.transform.position, Quaternion.identity);
         p.GetComponent<ParticleSystem>().startColor = customColor;
         p.GetComponent<ParticleSystemRenderer>().material = customShader;
     }
@@ -142,6 +148,8 @@ public class Bullet : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(this.transform.position, explosionRadius);
         explosive = false;
+        spawnParticleSystem();
         foreach (Collider2D c in hits) OnTriggerEnter2D(c);
+        Destroy(this.gameObject);
     }
 }

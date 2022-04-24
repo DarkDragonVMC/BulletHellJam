@@ -58,11 +58,21 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {
         currentBullet = wm.currentWeapon.Shoot(firePoint);
+        if (wm.currentWeapon.secondTexture)
+        {
+            GameObject.Find("wpGraphics").GetComponent<SpriteRenderer>().sprite = wm.currentWeapon.secondTexture;
+            Invoke("resetTexture", 0.6f);
+        }
         cooldown = timeBetweenShots;
     }
 
     public void updateAmmoDisplay(int newNumber)
     {
         ammoDisplay.SetText(newNumber.ToString());
+    }
+
+    private void resetTexture()
+    {
+        GameObject.Find("wpGraphics").GetComponent<SpriteRenderer>().sprite = wm.currentWeapon.texture;
     }
 }

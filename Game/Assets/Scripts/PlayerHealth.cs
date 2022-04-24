@@ -25,11 +25,11 @@ public class PlayerHealth : MonoBehaviour
 
     //Game Over Screen
     public float fadeInSpeed;
-    private CanvasGroup gameOverScreen;
-    private GameObject backToMenuButton;
-    private GameObject restartButton;
-    private GameObject quitButton;
-    private GameObject pauseMenu;
+    public CanvasGroup gameOverScreen;
+    public GameObject backToMenuButton;
+    public GameObject restartButton;
+    public GameObject quitButton;
+    public GameObject pauseMenu;
 
     public bool dead;
 
@@ -40,12 +40,6 @@ public class PlayerHealth : MonoBehaviour
         hearts[0] = GameObject.Find("Heart0").GetComponent<Image>();
         hearts[1] = GameObject.Find("Heart1").GetComponent<Image>();
         hearts[2] = GameObject.Find("Heart2").GetComponent<Image>();
-
-        gameOverScreen = GameObject.Find("GameOver").GetComponent<CanvasGroup>();
-        backToMenuButton = GameObject.Find("BackToMenu");
-        restartButton = GameObject.Find("Restart");
-        quitButton = GameObject.Find("Quit");
-        pauseMenu = GameObject.Find("PauseMenu");
 
         sm = GameObject.Find("SceneManager").GetComponent<SceneManagement>();
 
@@ -80,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
     public void heal(int amount)
     {
         if (dead) return;
+        if (healthPoints >= maxHealth) return;
         healthPoints = healthPoints + amount;
         if (healthPoints > maxHealth) healthPoints = maxHealth;
         updateHealthDisplay();
@@ -141,15 +136,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void Die()
     {
+        Score.scoreGo.SetActive(false);
         if (dead) return;
         pauseMenu.SetActive(false);
         backToMenuButton.SetActive(true);
         restartButton.SetActive(true);
         quitButton.SetActive(true);
-
-        StartCoroutine(fadeIn());
+        Score.scoreGo.SetActive(false);
 
         StartCoroutine(sm.fadeOut());
+
+        StartCoroutine(fadeIn());
 
         healthPoints = 0;
         updateHealthDisplay();
@@ -161,6 +158,7 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator fadeIn()
     {
         gameOverScreen.gameObject.SetActive(true);
+        Score.scoreGo.SetActive(false);
         while (gameOverScreen.alpha < 1)
         {
             gameOverScreen.alpha += Time.deltaTime * fadeInSpeed;

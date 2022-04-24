@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebde7cc7ae9096046b9bc8bf00947118, type: 3}
-  m_Name: Blaster
+  m_Name: Machine Gun
   m_EditorClassIdentifier: 
-  name: Blaster
-  description: Standard weapon
+  name: Machine Gun
+  description: There's no better name for this
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 9
-  timeBetweenShots: 0.6
-  timeToLive: 1.75
+  bulletForce: 7
+  timeBetweenShots: 0.35
+  timeToLive: 1.5
   damage: 1
   explosive: 0
   explosionRadius: 0
@@ -30,6 +30,7 @@ MonoBehaviour:
   shotgun: 0
   bullets: 1
   spray: 0
-  fpOffset: {x: 0.65, y: 0.6}
-  texture: {fileID: 21300000, guid: 5eb02122155497b45bfb2ea05d1d3b75, type: 3}
+  fpOffset: {x: 0.65, y: 0.92}
+  texture: {fileID: 21300000, guid: 7758ef3624dbfd04f9c19e146bdb3e9a, type: 3}
+  secondTexture: {fileID: 0}
   soundName: Shooting

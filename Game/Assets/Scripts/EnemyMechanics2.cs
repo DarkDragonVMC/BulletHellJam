@@ -21,6 +21,7 @@ public class EnemyMechanics2 : MonoBehaviour
     private PlayerHealth ph;
 
     public GameObject[] itemDrops;
+    public GameObject weaponDrop;
     public int scoreIncrease;
     public int droppingPercentage;
 
@@ -86,7 +87,11 @@ public class EnemyMechanics2 : MonoBehaviour
         if (healthPoints <= 0)
         {
             float value = droppingPercentage * 0.01f;
-            if (Random.value > (1 - value))
+            if (Random.value > 0.95)
+            {
+                Instantiate(weaponDrop, this.gameObject.transform.position, Quaternion.identity);
+            }
+            else if (Random.value > (1 - value))
             {
                 int itemNumber = Random.Range(0, itemDrops.Length);
                 Instantiate(itemDrops[itemNumber], this.gameObject.transform.position, this.gameObject.transform.rotation);
