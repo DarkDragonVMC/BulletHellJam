@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Buggy
   description: Not a Valorant reference at all
   bullet: {fileID: 3201409110348124239, guid: 4d10202d082f59643a6801f02e3ae08d, type: 3}
-  bulletForce: 2.5
+  bulletForce: 8.5
   timeBetweenShots: 1
-  timeToLive: 0.65
+  timeToLive: 1
   damage: 1
   explosive: 0
   explosionRadius: 0
@@ -29,7 +29,8 @@ MonoBehaviour:
   pointerLength: 100
   shotgun: 1
   bullets: 4
-  spray: 1.75
+  spray: 2
   fpOffset: {x: 0.65, y: 0.95}
   texture: {fileID: 21300000, guid: a4db5c741ac68e241a452bc63595e85a, type: 3}
+  secondTexture: {fileID: 0}
   soundName: Shooting

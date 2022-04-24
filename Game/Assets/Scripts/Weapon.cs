@@ -81,6 +81,7 @@ public class Weapon : ScriptableObject
                 offset2.y = Random.Range(-spray, spray);
 
                 Vector2 lookDir = mousePos - temp + offset2;
+                lookDir = lookDir.normalized;
                 rb.AddForce(lookDir * bulletForce, ForceMode2D.Impulse);
 
                 //set Bullet values

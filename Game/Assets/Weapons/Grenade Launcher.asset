@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebde7cc7ae9096046b9bc8bf00947118, type: 3}
-  m_Name: Life Stealer
+  m_Name: Grenade Launcher
   m_EditorClassIdentifier: 
-  name: Life Stealer
-  description: May heal you
-  bullet: {fileID: 3201409110348124239, guid: e6cf7f27b1bd4da4f86e9dacba4348ab, type: 3}
-  bulletForce: 6.5
-  timeBetweenShots: 0.7
-  timeToLive: 1.6
+  name: Grenade Launcher
+  description: Pow Pow with Heal Heal
+  bullet: {fileID: 3201409110348124239, guid: 488c86f22ee16b54f9f85bb2dee5d6d1, type: 3}
+  bulletForce: 4
+  timeBetweenShots: 1.75
+  timeToLive: 1.9
   damage: 1
-  explosive: 0
-  explosionRadius: 0
-  healPercentage: 15
+  explosive: 1
+  explosionRadius: 2.5
+  healPercentage: 10
   healAmount: 1
   pointer: 0
   pointerColor: {r: 0, g: 0, b: 0, a: 0}
@@ -30,7 +30,7 @@ MonoBehaviour:
   shotgun: 0
   bullets: 1
   spray: 0
-  fpOffset: {x: 0.65, y: 0.65}
-  texture: {fileID: 21300000, guid: 97c6e9f46716455489944c8d183b423d, type: 3}
+  fpOffset: {x: 0.65, y: 0.88}
+  texture: {fileID: 21300000, guid: 87f8db5a0f016344abde5ba1f62d50d0, type: 3}
   secondTexture: {fileID: 0}
   soundName: Shooting

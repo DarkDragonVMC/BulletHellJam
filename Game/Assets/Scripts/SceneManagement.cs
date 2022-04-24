@@ -19,12 +19,17 @@ public class SceneManagement : MonoBehaviour
 
     void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu") SettingsManager.loadSettings(GameObject.Find("Global Volume (Effects)").GetComponent<Volume>());
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            SettingsManager.loadSettings(GameObject.Find("Global Volume (Effects)").GetComponent<Volume>());
+            Score.updateHighScoreDisplay(SceneManager.GetSceneByBuildIndex(0), SceneManager.GetActiveScene());
+        }
         if (pausedScreen) pausedScreen.gameObject.SetActive(false);
     }
 
     private void Start()
     {
+        SceneManager.activeSceneChanged += Score.updateHighScoreDisplay;
         if (SceneManager.GetActiveScene().buildIndex != 1) return;
 
         backToMenuButton.SetActive(false);

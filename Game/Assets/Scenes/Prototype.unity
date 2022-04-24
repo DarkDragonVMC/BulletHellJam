@@ -3638,7 +3638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 11400000, guid: 017e2149847d6ae40af77d25091eb0ff, type: 2}
   fadeSpeed: 0.6
-  displaySize: 5
+  displaySize: 3
   pointer: {fileID: 977632241}
 --- !u!1 &1004019793
 GameObject:
