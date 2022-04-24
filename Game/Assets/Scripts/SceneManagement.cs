@@ -69,6 +69,9 @@ public class SceneManagement : MonoBehaviour
     public void startGame()
     {
         SceneManager.LoadScene("Prototype");
+        paused = false;
+        fading = false;
+        Time.timeScale = 1;
     }
     public void quit()
     {

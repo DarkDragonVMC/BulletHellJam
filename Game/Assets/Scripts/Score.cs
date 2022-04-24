@@ -16,16 +16,18 @@ public class Score : MonoBehaviour
         if (PlayerPrefs.HasKey("highScore")) highScore = PlayerPrefs.GetInt("highScore");
         else highScore = 0;
         UpdateScore(0);
-        timeToIncreaseScore = 60;
+        timeToIncreaseScore = 20;
     }
 
     private void Update()
     {
+        if (SceneManagement.paused) return;
+        if (FindObjectOfType<PlayerHealth>().dead) return;
         timeToIncreaseScore -= Time.deltaTime;
         if(timeToIncreaseScore <= 0)
         {
             UpdateScore(1);
-            timeToIncreaseScore = 60;
+            timeToIncreaseScore = 20;
         }
     }
 

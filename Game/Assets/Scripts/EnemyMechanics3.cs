@@ -46,7 +46,7 @@ public class EnemyMechanics3 : MonoBehaviour
         if (healthPoints <= 0)
         {
             float value = droppingPercentage * 0.01f;
-            if (Random.value > 0.93)
+            if (Random.value > 0.88)
             {
                 Instantiate(weaponDrop, this.gameObject.transform.position, Quaternion.identity);
             }

@@ -15,6 +15,9 @@ public class EnemySpawning : MonoBehaviour
     public int whichEnemy;
     PlayerHealth ph;
 
+    public List<GameObject> enemies = new();
+    public float maxDist;
+
 
     private void Awake()
     {
@@ -73,7 +76,16 @@ public class EnemySpawning : MonoBehaviour
             Enemy = Instantiate(E3, new Vector3(player.transform.position.x + posX, player.transform.position.y + posY, 0), player.transform.rotation);
         }
         EnemyMechanics1.EnemySaves.Add(Enemy.GetComponent<Rigidbody2D>());
+        enemies.Add(Enemy);
     }
 
+    private IEnumerator despawn()
+    {
+        while(true)
+        {
+            foreach(GameObject g in enemies) if (Vector2.Distance(player.transform.position, g.transform.position) > maxDist) Destroy(g);
+            yield return new WaitForSecondsRealtime(5);
+        }
+    }
 
 }
