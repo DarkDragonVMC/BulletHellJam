@@ -19,13 +19,13 @@ public class EnemySpawning : MonoBehaviour
     public List<GameObject> enemiesToRemove = new ();
     public float maxDist;
 
-    private float minSpawnTime = 8f;
-    private float maxSpawnTime = 15f;
+    public float minSpawnTime = 8f;
+    public float maxSpawnTime = 13f;
 
     private void Awake()
     {
         ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
-        globalTimer = 4f;
+        globalTimer = 3.5f;
         StartCoroutine(despawn());
         StartCoroutine(decreaseSpawnTime());
     }
@@ -34,11 +34,11 @@ public class EnemySpawning : MonoBehaviour
     {
         while(true)
         {
-            if (minSpawnTime > 2.5f) minSpawnTime -= 0.125f;
-            if (minSpawnTime < 2.5f) minSpawnTime = 2.5f;
-            if (maxSpawnTime > 6.5f) maxSpawnTime -= 0.1f;
-            if (maxSpawnTime < 6.5f) maxSpawnTime = 6.5f;
-            yield return new WaitForSecondsRealtime(15);
+            if (minSpawnTime > 2f) minSpawnTime -= 0.15f;
+            if (minSpawnTime < 2f) minSpawnTime = 2f;
+            if (maxSpawnTime > 6f) maxSpawnTime -= 0.125f;
+            if (maxSpawnTime < 6f) maxSpawnTime = 6f;
+            yield return new WaitForSecondsRealtime(14);
         }
     }
 
@@ -56,6 +56,7 @@ public class EnemySpawning : MonoBehaviour
 
     public void GenerateEnemyCoords()
     {
+        Debug.Log("1");
         PlusOrMinus = Random.Range(0, 2);
         if(PlusOrMinus == 0)
         {
