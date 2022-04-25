@@ -98,8 +98,8 @@ public class WeaponManager : MonoBehaviour
         weaponPickup.gameObject.SetActive(true);
         Score.scoreGo.SetActive(false);
 
-        EnemyMechanics1.saveBulletVelocity();
-        EnemyMechanics1.saveEnemyVelocity();
+        //EnemyMechanics1.saveBulletVelocity();
+        //EnemyMechanics1.saveEnemyVelocity();
         SceneManagement.paused = true;
 
         //setup screen
@@ -134,8 +134,8 @@ public class WeaponManager : MonoBehaviour
             yield return null;
         }
 
-        EnemyMechanics1.loadBulletVelocity();
-        EnemyMechanics1.loadEnemyVelocity();
+        //EnemyMechanics1.loadBulletVelocity();
+        //EnemyMechanics1.loadEnemyVelocity();
         SceneManagement.paused = false;
         wpCont.gameObject.SetActive(false);
         weaponPickup.gameObject.SetActive(false);

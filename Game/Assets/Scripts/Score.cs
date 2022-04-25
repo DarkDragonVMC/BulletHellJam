@@ -16,7 +16,7 @@ public class Score : MonoBehaviour
         if (PlayerPrefs.HasKey("highScore")) highScore = PlayerPrefs.GetInt("highScore");
         else highScore = 0;
         UpdateScore(0);
-        timeToIncreaseScore = 20;
+        timeToIncreaseScore = 15;
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class Score : MonoBehaviour
         if(timeToIncreaseScore <= 0)
         {
             UpdateScore(1);
-            timeToIncreaseScore = 20;
+            timeToIncreaseScore = 15;
         }
     }
 

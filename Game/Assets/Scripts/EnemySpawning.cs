@@ -16,15 +16,30 @@ public class EnemySpawning : MonoBehaviour
     PlayerHealth ph;
 
     public List<GameObject> enemies = new();
+    public List<GameObject> enemiesToRemove = new ();
     public float maxDist;
 
+    private float minSpawnTime = 8f;
+    private float maxSpawnTime = 15f;
 
     private void Awake()
     {
-        globalTimer = Random.Range(8, 20);
         ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
-        Invoke("GenerateEnemyCoords", 4f);
+        globalTimer = 4f;
+        StartCoroutine(despawn());
+        StartCoroutine(decreaseSpawnTime());
+    }
 
+    private IEnumerator decreaseSpawnTime()
+    {
+        while(true)
+        {
+            if (minSpawnTime > 2.5f) minSpawnTime -= 0.125f;
+            if (minSpawnTime < 2.5f) minSpawnTime = 2.5f;
+            if (maxSpawnTime > 6.5f) maxSpawnTime -= 0.1f;
+            if (maxSpawnTime < 6.5f) maxSpawnTime = 6.5f;
+            yield return new WaitForSecondsRealtime(15);
+        }
     }
 
     private void Update()
@@ -35,7 +50,7 @@ public class EnemySpawning : MonoBehaviour
         if(globalTimer <= 0)
         {
             GenerateEnemyCoords();
-            globalTimer = Random.Range(8, 13);
+            globalTimer = Random.Range(minSpawnTime, maxSpawnTime);
         }
     }
 
@@ -83,7 +98,14 @@ public class EnemySpawning : MonoBehaviour
     {
         while(true)
         {
-            foreach(GameObject g in enemies) if (Vector2.Distance(player.transform.position, g.transform.position) > maxDist) Destroy(g);
+            foreach(GameObject g in enemies)
+            {
+                if (g == null) enemiesToRemove.Add(g);
+                else if (Vector2.Distance(player.transform.position, g.transform.position) > maxDist) Destroy(g);
+            }
+            foreach (GameObject g in enemiesToRemove) enemies.Remove(g);
+            enemiesToRemove.Clear();
+
             yield return new WaitForSecondsRealtime(5);
         }
     }

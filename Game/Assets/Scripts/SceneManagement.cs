@@ -89,8 +89,8 @@ public class SceneManagement : MonoBehaviour
             quitButton.SetActive(true);
             restartButton.SetActive(true);
 
-            EnemyMechanics1.saveBulletVelocity();
-            EnemyMechanics1.saveEnemyVelocity();
+            //EnemyMechanics1.saveBulletVelocity();
+            //EnemyMechanics1.saveEnemyVelocity();
 
             paused = true;
 
@@ -101,6 +101,7 @@ public class SceneManagement : MonoBehaviour
                 if (pauseMenu.alpha > 1) pauseMenu.alpha = 1;
                 yield return null;
             }
+            Time.timeScale = 0;
             fading = false;
         }
     }
@@ -115,10 +116,11 @@ public class SceneManagement : MonoBehaviour
             quitButton.SetActive(false);
             restartButton.SetActive(false);
 
-            EnemyMechanics1.loadBulletVelocity();
-            EnemyMechanics1.loadEnemyVelocity();
+            //EnemyMechanics1.loadBulletVelocity();
+            //EnemyMechanics1.loadEnemyVelocity();
 
             paused = false;
+            Time.timeScale = 1;
 
             while (pauseMenu.alpha > 0)
             {

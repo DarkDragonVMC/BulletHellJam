@@ -882,7 +882,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: You are an astronaut stranded on the moon, fighting the evil monsters and
-    trying to survive and expand your base.
+    trying to survive and expand your base which is the only area you can breathe
+    in.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
   m_sharedMaterial: {fileID: -6580988126190787604, guid: c915f3f607d2f8a4abdb03310804d5c4, type: 2}
