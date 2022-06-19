@@ -59,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(int amount)
     {
         if (dead) return;
+        if (Time.timeScale == 0) return;
         healthPoints = healthPoints - amount;
         if (healthPoints < 0) healthPoints = 0;
         updateHealthDisplay();
@@ -159,9 +160,10 @@ public class PlayerHealth : MonoBehaviour
     {
         gameOverScreen.gameObject.SetActive(true);
         Score.scoreGo.SetActive(false);
+        Time.timeScale = 0;
         while (gameOverScreen.alpha < 1)
         {
-            gameOverScreen.alpha += Time.deltaTime * fadeInSpeed;
+            gameOverScreen.alpha += Time.unscaledDeltaTime * fadeInSpeed;
             if (gameOverScreen.alpha > 1) gameOverScreen.alpha = 1;
             yield return null;
         }

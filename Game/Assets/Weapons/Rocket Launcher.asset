@@ -18,9 +18,9 @@ MonoBehaviour:
   bulletForce: 7
   timeBetweenShots: 1.6
   timeToLive: 1.5
-  damage: 1
+  damage: 2
   explosive: 1
-  explosionRadius: 4
+  explosionRadius: 2.5
   healPercentage: 0
   healAmount: 0
   pointer: 0

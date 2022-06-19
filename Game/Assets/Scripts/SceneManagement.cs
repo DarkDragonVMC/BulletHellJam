@@ -93,15 +93,14 @@ public class SceneManagement : MonoBehaviour
             //EnemyMechanics1.saveEnemyVelocity();
 
             paused = true;
-
+            Time.timeScale = 0;
 
             while (pauseMenu.alpha < 1)
             {
-                pauseMenu.alpha += Time.deltaTime * fadeInSpeed;
+                pauseMenu.alpha += Time.unscaledDeltaTime * fadeInSpeed;
                 if (pauseMenu.alpha > 1) pauseMenu.alpha = 1;
                 yield return null;
             }
-            Time.timeScale = 0;
             fading = false;
         }
     }
@@ -120,16 +119,17 @@ public class SceneManagement : MonoBehaviour
             //EnemyMechanics1.loadEnemyVelocity();
 
             paused = false;
-            Time.timeScale = 1;
 
             while (pauseMenu.alpha > 0)
             {
-                pauseMenu.alpha -= Time.deltaTime * fadeInSpeed;
+                pauseMenu.alpha -= Time.unscaledDeltaTime * fadeInSpeed;
                 if (pauseMenu.alpha < 0) pauseMenu.alpha = 0;
                 yield return null;
             }
             pausedScreen.gameObject.SetActive(false);
             fading = false;
+
+            Time.timeScale = 1;
         }
     }
 }

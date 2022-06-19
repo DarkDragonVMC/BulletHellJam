@@ -20,7 +20,7 @@ MonoBehaviour:
   timeToLive: 1.9
   damage: 1
   explosive: 1
-  explosionRadius: 2.5
+  explosionRadius: 3.25
   healPercentage: 10
   healAmount: 1
   pointer: 0

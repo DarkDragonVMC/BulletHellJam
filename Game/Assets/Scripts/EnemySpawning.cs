@@ -56,7 +56,6 @@ public class EnemySpawning : MonoBehaviour
 
     public void GenerateEnemyCoords()
     {
-        Debug.Log("1");
         PlusOrMinus = Random.Range(0, 2);
         if(PlusOrMinus == 0)
         {

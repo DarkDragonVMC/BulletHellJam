@@ -513,7 +513,10 @@ MonoBehaviour:
   E3: {fileID: 6418722212937545638, guid: dc87eb64ec5b6af46a3484b9f2be0f7c, type: 3}
   whichEnemy: 0
   enemies: []
-  maxDist: 30
+  enemiesToRemove: []
+  maxDist: 37
+  minSpawnTime: 8
+  maxSpawnTime: 13
 --- !u!4 &252014193
 Transform:
   m_ObjectHideFlags: 0
@@ -2583,7 +2586,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 512, y: 512}
+  m_Size: {x: 1024, y: 1024}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3021,7 +3024,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &795706157
 CanvasGroup:
@@ -4872,7 +4875,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1286318794
 CanvasGroup:
@@ -5255,10 +5258,10 @@ RectTransform:
   m_Father: {fileID: 1015221333}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 3840, y: 1891.7598}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1445420811
 CanvasGroup:

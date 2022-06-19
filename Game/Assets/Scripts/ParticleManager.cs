@@ -14,7 +14,10 @@ public class ParticleManager : MonoBehaviour
         while(true)
         {
             GameObject[] toClear = GameObject.FindGameObjectsWithTag("BShatter");
-            foreach (GameObject g in toClear) Destroy(g);
+            foreach (GameObject g in toClear)
+            {
+                if(!g.GetComponent<ParticleSystem>().isPlaying) Destroy(g);
+            }
             yield return new WaitForSeconds(20);
         }
     }

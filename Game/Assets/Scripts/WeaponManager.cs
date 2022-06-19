@@ -109,13 +109,14 @@ public class WeaponManager : MonoBehaviour
         wpName.text = currentWeapon.name;
         wpDesc.text = currentWeapon.description;
 
+        Time.timeScale = 0;
+
         while (weaponPickup.alpha < 1)
         {
-            weaponPickup.alpha += Time.deltaTime * fadeSpeed;
+            weaponPickup.alpha += Time.unscaledDeltaTime * fadeSpeed;
             if (weaponPickup.alpha > 1) weaponPickup.alpha = 1;
             yield return null;
         }
-        Time.timeScale = 0;
     }
 
     public void callFadeOut()
@@ -126,13 +127,14 @@ public class WeaponManager : MonoBehaviour
     private IEnumerator fadeOut()
     {
         Score.scoreGo.SetActive(true);
-        Time.timeScale = 1;
         while (weaponPickup.alpha > 0)
         {
-            weaponPickup.alpha -= Time.deltaTime * fadeSpeed;
+            weaponPickup.alpha -= Time.unscaledDeltaTime * fadeSpeed;
             if (weaponPickup.alpha < 0) weaponPickup.alpha = 0;
             yield return null;
         }
+
+        Time.timeScale = 1;
 
         //EnemyMechanics1.loadBulletVelocity();
         //EnemyMechanics1.loadEnemyVelocity();
